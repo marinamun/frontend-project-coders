@@ -10,7 +10,7 @@ const Profile = () => {
     fetchWithToken("/users", (parsed) => {
       console.log(parsed);
     });
-  }, []);
+  }, [])
 
   return (
     <>

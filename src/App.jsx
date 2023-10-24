@@ -5,8 +5,6 @@ import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import Homepage from "./pages/Homepage";
 import Feed from "./pages/Feed";
-import { Link } from "react-router-dom";
-import Navbar from "./components/Navbar";
 
 function App() {
   return (
