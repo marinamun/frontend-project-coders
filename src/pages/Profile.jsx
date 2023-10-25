@@ -21,7 +21,7 @@ const Profile = () => {
     const fetchUser = async () => {
       try {
         const responseFromBackend = await fetch(
-          `${import.meta.env.VITE_API_URL}/profile/${profileId}`
+          `${import.meta.env.VITE_API_URL}/api/profile/${profileId}`
         );
         if (responseFromBackend.ok) {
           const parsedFromBackend = await responseFromBackend.json();
