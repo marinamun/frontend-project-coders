@@ -8,7 +8,6 @@ import Feed from "./pages/Feed";
 import QuestionDetailsPage from "./pages/QuestionDetailsPage";
 import PostYourQuestions from "./pages/PostYourQuestion";
 import PostYourQuestion from "./pages/PostYourQuestion";
-
 function App() {
   return (
     <>
@@ -16,7 +15,6 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-
         {/* Route to the see all the questions in the feed*/}
         <Route
           path="/feed"
@@ -26,7 +24,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
         {/* Route to the see details of one question*/}
         <Route
           path="/feed/:questionId"
@@ -36,7 +33,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
         {/* Route to add a question*/}
         <Route
           path="/feed/new"
@@ -46,7 +42,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
         {/* Route to the see details of one user*/}
         <Route
           path="/users/:userId"
@@ -68,5 +63,4 @@ function App() {
     </>
   );
 }
-
 export default App;
