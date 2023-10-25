@@ -15,13 +15,13 @@ const Profile = () => {
 
   const UserProfile = () => {
     const navigate = useNavigate();
-    const { profileId } = useParams();
+    const { userId } = useParams();
     const [user, setUser] = useState();
 
     const fetchUser = async () => {
       try {
         const responseFromBackend = await fetch(
-          `${import.meta.env.VITE_API_URL}/profile/${profileId}`
+          `${import.meta.env.VITE_API_URL}/api/users/${userId}`
         );
         if (responseFromBackend.ok) {
           const parsedFromBackend = await responseFromBackend.json();
@@ -37,7 +37,7 @@ const Profile = () => {
 
     useEffect(() => {
       fetchUser();
-    }, [profileId]);
+    }, [userId]);
 
     return user ? (
       <>

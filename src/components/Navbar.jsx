@@ -9,7 +9,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link to="/profile">Your profile</Link>
+            <Link to="/profile/:profileId">Your profile</Link>
           </li>
         </ul>
       </nav>
