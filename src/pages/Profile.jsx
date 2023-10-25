@@ -5,13 +5,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   // To protect the user page. Only the logged-in user can access it.
-  const { fetchWithToken } = useContext(AuthContext);
+  const { fetchWithToken, user } = useContext(AuthContext);
 
-  useEffect(() => {
+ /*  useEffect(() => {
     fetchWithToken("/users", (parsed) => {
       console.log(parsed);
     });
-  }, [])
+  }, []) */
 
   const UserProfile = () => {
     const navigate = useNavigate();
@@ -23,6 +23,7 @@ const Profile = () => {
         const responseFromBackend = await fetch(
           `${import.meta.env.VITE_API_URL}/api/users/${userId}`
         );
+        console.log(userId);
         if (responseFromBackend.ok) {
           const parsedFromBackend = await responseFromBackend.json();
           console.log(parsedFromBackend);
@@ -55,7 +56,7 @@ const Profile = () => {
     );
   }
 
-  return <UserProfile />; // Call the UserProfile component
+  return <UserProfile />;
 }
 
 export default Profile;

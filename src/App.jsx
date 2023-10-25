@@ -49,7 +49,7 @@ function App() {
 
         {/* Route to the see details of one user*/}
         <Route
-          path="/profile/:profileId"
+          path="/users/:userId"
           element={
             <PrivateRoute>
               <Profile />

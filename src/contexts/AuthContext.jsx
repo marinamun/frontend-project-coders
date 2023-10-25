@@ -6,6 +6,7 @@ const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
   const handleLogin = async (currentToken) => {
     setIsLoading(true);
@@ -19,6 +20,8 @@ const AuthContextProvider = ({ children }) => {
         }
       );
       if (response.ok) {
+        const parsed = await response.json()
+        setUser(parsed);
         setToken(currentToken);
         setIsAuthenticated(true);
         window.localStorage.setItem("authToken", currentToken);
@@ -62,7 +65,7 @@ const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ fetchWithToken, isLoading, isAuthenticated, handleLogin }}
+      value={{ fetchWithToken, isLoading, isAuthenticated, handleLogin, user }}
     >
       {children}
     </AuthContext.Provider>
