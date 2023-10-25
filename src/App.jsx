@@ -8,7 +8,6 @@ import Feed from "./pages/Feed";
 import QuestionDetailsPage from "./pages/QuestionDetailsPage";
 import PostYourQuestions from "./pages/PostYourQuestion";
 import PostYourQuestion from "./pages/PostYourQuestion";
-import OneQuestion from "./pages/OneQuestion";
 
 function App() {
   return (
@@ -65,7 +64,6 @@ function App() {
             </PrivateRoute>
           }
         />
-        
       </Routes>
     </>
   );
