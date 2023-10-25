@@ -65,14 +65,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/questions/:id"
-          element={
-            <PrivateRoute>
-              <OneQuestion />
-            </PrivateRoute>
-          }
-        />
+        
       </Routes>
     </>
   );
