@@ -11,7 +11,7 @@ const Profile = () => {
     fetchWithToken("/users", (parsed) => {
       console.log(parsed);
     });
-  }, []);
+  }, [])
 
   const UserProfile = () => {
     const navigate = useNavigate();
