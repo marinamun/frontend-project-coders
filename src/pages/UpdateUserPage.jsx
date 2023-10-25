@@ -10,7 +10,7 @@ const UpdateUserPage = () => {
   const [languages, setLanguages] = useState("");
   const [level, setLevel] = useState("");
   const [photo, setPhoto] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const onSubmit = async (event) => {
@@ -50,7 +50,7 @@ const UpdateUserPage = () => {
         <div className="form-group">
           <label htmlFor="userName">Username</label>
           <input
-            className="cats-input"
+className="cats-input"
             type="text"
             name="userName"
             value={userName}
@@ -61,7 +61,7 @@ const UpdateUserPage = () => {
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
-            className="cats-input"
+className="cats-input"
             type="text"
             name="email"
             value={email}
@@ -72,7 +72,7 @@ const UpdateUserPage = () => {
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
-            className="cats-input"
+className="cats-input"
             type="password"
             name="password"
             value={password}
@@ -108,7 +108,7 @@ const UpdateUserPage = () => {
         <div className="form-group">
           <label htmlFor="photo">Photo URL:</label>
           <input
-            className="cats-input"
+className="cats-input"
             type="text"
             name="photo"
             value={photo}

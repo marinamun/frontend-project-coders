@@ -9,12 +9,12 @@ import Feed from "./pages/Feed";
 function App() {
   return (
     <>
-      
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route
+                <Route
           path="/feed"
           element={
             <PrivateRoute>
