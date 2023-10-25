@@ -26,7 +26,7 @@ function App() {
         />
 
         <Route
-          path="/profile"
+          path="/profile/:profileId"
           element={
             <PrivateRoute>
               <Profile />
