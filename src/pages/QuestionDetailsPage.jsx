@@ -19,11 +19,7 @@ const QuestionDetailsPage = () => {
   const [user, setUser] = useState();
 
   const fetchQuestion = async () => {
-<<<<<<< HEAD
-
-=======
     
->>>>>>> master
     try {
       const responseFromBackend = await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/${questionId}`
