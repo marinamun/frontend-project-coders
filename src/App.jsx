@@ -7,11 +7,12 @@ import Homepage from "./pages/Homepage";
 import Feed from "./pages/Feed";
 import QuestionDetailsPage from "./pages/QuestionDetailsPage";
 import PostYourQuestions from "./pages/PostYourQuestion";
+import PostYourQuestion from "./pages/PostYourQuestion";
+import OneQuestion from "./pages/OneQuestion";
 
 function App() {
   return (
     <>
-      
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignUp />} />
@@ -53,6 +54,22 @@ function App() {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/questions/new"
+          element={
+            <PrivateRoute>
+              <PostYourQuestion />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/questions/:id"
+          element={
+            <PrivateRoute>
+              <OneQuestion />
             </PrivateRoute>
           }
         />
