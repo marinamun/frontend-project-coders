@@ -23,7 +23,7 @@ function App() {
           }
         />
 
-        <Route
+                <Route
           path="/profile"
           element={
             <PrivateRoute>
@@ -31,7 +31,7 @@ function App() {
             </PrivateRoute>
           }
         />
-      </Routes>
+              </Routes>
     </>
   );
 }
