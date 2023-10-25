@@ -5,18 +5,18 @@ import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import Homepage from "./pages/Homepage";
 import Feed from "./pages/Feed";
-import UpdateUserPage from "./pages/UpdateUserPage";
-
+import QuestionDetailsPage from "./pages/QuestionDetailsPage";
+import PostYourQuestions from "./pages/PostYourQuestion";
+import PostYourQuestion from "./pages/PostYourQuestion";
 function App() {
   return (
     <>
-
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Routes path="/updateuserpage" element={<UpdateUserPage/>}></Routes>
-                <Route
+        {/* Route to the see all the questions in the feed*/}
+        <Route
           path="/feed"
           element={
             <PrivateRoute>
@@ -24,18 +24,43 @@ function App() {
             </PrivateRoute>
           }
         />
-
-                <Route
-          path="/profile"
+        {/* Route to the see details of one question*/}
+        <Route
+          path="/feed/:questionId"
+          element={
+            <PrivateRoute>
+              <QuestionDetailsPage />
+            </PrivateRoute>
+          }
+        />
+        {/* Route to add a question*/}
+        <Route
+          path="/feed/new"
+          element={
+            <PrivateRoute>
+              <PostYourQuestions />
+            </PrivateRoute>
+          }
+        />
+        {/* Route to the see details of one user*/}
+        <Route
+          path="/users/:userId"
           element={
             <PrivateRoute>
               <Profile />
             </PrivateRoute>
           }
         />
-              </Routes>
+        <Route
+          path="/questions/new"
+          element={
+            <PrivateRoute>
+              <PostYourQuestion />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
     </>
   );
 }
-
 export default App;

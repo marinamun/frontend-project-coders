@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
+
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <nav>
@@ -9,7 +13,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link to="/profile/:profileId">Your profile</Link>
+            <Link to={`/users/${user.userId}`}>Your profile</Link>
           </li>
         </ul>
       </nav>
