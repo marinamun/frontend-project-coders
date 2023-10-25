@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { AbortedDeferredError, Link } from "react-router-dom";
 
 const Feed = () => {
 
   const [questions, setQuestions] = useState([])
+  const [users, setUsers] = useState([]);
 
   const getAllQuestions = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/questions`)
-      if(response.ok) {
-        const allTheQuestions = await response.json()
-        setQuestions(allTheQuestions)
+      const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/questions`)
+      if(responseFromBackend.ok) {
+        const parsed = await responseFromBackend.json()
+        setQuestions(parsed.questions)
       }
     }
     catch (error) {
@@ -19,8 +20,24 @@ const Feed = () => {
     }
   }
 
+  const getAllUsers = async () => {
+    try {
+      const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/users`)
+      if(responseFromBackend.ok) {
+        const parsed = await responseFromBackend.json()
+        setUsers(parsed.users)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     getAllQuestions()
+  }, [])
+
+  useEffect(() => {
+    getAllUsers()
   }, [])
 
   return (
@@ -34,15 +51,31 @@ const Feed = () => {
           <input />
         </label>
       </div>
+      <div>
+        <Link to={'/feed/new'}>
+          <button>+</button>
+        </Link>
+      </div>
       <ul className="post">
         {questions.map(question => (
           <li  key={question._id}>
-            <Link to={`/questions/${question._id}`}>
-              <img src={question.owner.photo}/>
-              <h3>question.title</h3>
-              <p>question.text</p>
-              <p>question.photo</p>
-            </Link>
+            <div>
+              <div>
+                <Link to={`/feed/${question._id}`}>
+                  <img src={question.owner.photo}/>
+                  <h3>{question.title}</h3>
+                  <p>{question.text}</p>
+                  <p>{question.photo}</p>
+                </Link>
+              </div>
+              <div>
+                <button>Like</button>
+                <Link to={`/feed/${question._id}/answers}`}>
+                  <button>Comments</button>
+                </Link>
+                <button>Share</button>
+              </div>
+            </div> 
           </li>
         ))}
       </ul>

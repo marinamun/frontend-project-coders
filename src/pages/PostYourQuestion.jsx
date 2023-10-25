@@ -13,7 +13,7 @@ const PostYourQuestions = () => {
         const payload = {title, text, file}
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/users`,{ //do we need /api??
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/questions`,{ 
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -22,7 +22,7 @@ const PostYourQuestions = () => {
             })
             if (response.status === 201){
                 const yourQuestion = await response.json()
-                navigate("#/yourQuestion") //must create!!!
+                navigate("/feed/:questionId"); 
 
             }
         } catch(error){
@@ -51,7 +51,7 @@ const PostYourQuestions = () => {
           />
         </label>
         <label>
-          Text
+          File
           <input
             value={file}
             type=""
