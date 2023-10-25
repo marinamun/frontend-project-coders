@@ -57,7 +57,7 @@ const Feed = () => {
         </Link>
       </div>
       <ul className="post">
-        {questions.map(question => (
+        {questions && questions.map(question => (
           <li  key={question._id}>
             <div>
               <div>
