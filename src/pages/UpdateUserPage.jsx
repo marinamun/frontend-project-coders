@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 const UpdateUserPage = () => {
-  const { userId } = useParams();
+  //const { userId } = useParams();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,12 +14,13 @@ const UpdateUserPage = () => {
    const [country, setCountry] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const {user} = useContext(AuthContext);
 
 
   const fetchUser = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/${userId}`
+        `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`
       );
       if (response.ok) {
         const user = await response.json();
@@ -44,7 +46,7 @@ const UpdateUserPage = () => {
       const payload = { userName, email, password, languages, level, photo, country };
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
+        `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`,
           
         {
           method: "PUT",
@@ -58,7 +60,7 @@ const UpdateUserPage = () => {
 
       if (response.status === 200) {
         const parsed = await response.json();
-        navigate(`/user/${id}`)
+        navigate(`/users/${user.userId}`)
       }
     } catch (error) {
       console.log(error);

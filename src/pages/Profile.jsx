@@ -46,7 +46,7 @@ const Profile = () => {
         <p>{oneUser.languages}</p>
         <p>{oneUser.level}</p>
 
-        <Link to={`/users/${userId}/update`}>
+        <Link to={`/users/update`}>
         <button type='button'>Update</button>
       </Link>
       </>

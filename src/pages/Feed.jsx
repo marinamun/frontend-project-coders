@@ -51,7 +51,7 @@ const Feed = () => {
         </label>
       </div>
       <div>
-        <Link to={"/feed/new"}>
+        <Link to={"/questions/new"}>
           <button>+</button>
         </Link>
       </div>

@@ -35,15 +35,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* Route to add a question*/}
-        <Route
-          path="/feed/new"
-          element={
-            <PrivateRoute>
-              <PostYourQuestions />
-            </PrivateRoute>
-          }
-        />
+      
         {/* Route to the see details of one user*/}
         <Route
           path="/users"
@@ -64,7 +56,7 @@ function App() {
 
         {/* Route to add a question*/}
         <Route
-          path="/users/:id/update"
+          path="/users/update"
           element={
             <PrivateRoute>
               <UpdateUserPage />
