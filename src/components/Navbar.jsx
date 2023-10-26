@@ -13,7 +13,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link to={`/users/${user.userId}`}>Your profile</Link>
+            <Link to={`/users`}>Your profile</Link>
           </li>
         </ul>
       </nav>

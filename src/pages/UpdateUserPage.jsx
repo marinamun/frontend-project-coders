@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const UpdateUserPage = () => {
-  const { id } = useParams();
+  const { userId } = useParams();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const UpdateUserPage = () => {
   const fetchUser = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/${id}`
+        `${import.meta.env.VITE_API_URL}/api/users/${userId}`
       );
       if (response.ok) {
         const user = await response.json();
@@ -44,7 +44,7 @@ const UpdateUserPage = () => {
       const payload = { userName, email, password, languages, level, photo, country };
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
           
         {
           method: "PUT",

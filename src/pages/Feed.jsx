@@ -36,9 +36,6 @@ const Feed = () => {
 
   useEffect(() => {
     getAllQuestions();
-  }, []);
-
-  useEffect(() => {
     getAllUsers();
   }, []);
 

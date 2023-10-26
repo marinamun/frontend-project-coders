@@ -8,21 +8,21 @@ const Profile = () => {
   const { fetchWithToken, user } = useContext(AuthContext);
 
 
-  const UserProfile = () => {
+  
     const navigate = useNavigate();
     const { userId } = useParams();
     const [oneUser, setOneUser] = useState(null);
+    console.log(user);
 
     const fetchUser = async () => {
       try {
         const responseFromBackend = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users/${userId}`
+          `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`
         );
-        console.log(userId);
         if (responseFromBackend.ok) {
           const parsedFromBackend = await responseFromBackend.json();
           console.log(parsedFromBackend);
-          setOneUser(parsedFromBackend.oneUser);
+          setOneUser(parsedFromBackend.user);
         } else {
           console.error("Failed to fetch user data");
         }
@@ -54,7 +54,7 @@ const Profile = () => {
       <h1>Loading...</h1>
     );
   }
-}
+
 export default Profile;
 
 
