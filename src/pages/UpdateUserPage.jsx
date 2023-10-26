@@ -15,28 +15,28 @@ const UpdateUserPage = () => {
   const navigate = useNavigate();
 
 
-   const fetchUser = async () => {
-     try {
-       const response = await fetch(
-         `${import.meta.env.VITE_API_URL}/users/${id}`
-       );
-       if (response.ok) {
-         const user = await response.json();
-         setUserName(user.userName);
-         setEmail(user.email);
-         setPassword(user.password);
-         setLanguages(user.languages);
-         setPhoto(user.photo);
-         setLevel(user.level);
-       }
-     } catch (error) {
-       console.log(error);
-     }
-   };
-   useEffect(() => {
-     fetchUser();
-   }, []);
-   
+  const fetchUser = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/${id}`
+      );
+      if (response.ok) {
+        const user = await response.json();
+        setUserName(user.userName);
+        setEmail(user.email);
+        setPassword(user.password);
+        setLanguages(user.languages);
+        setPhoto(user.photo);
+        setLevel(user.level);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
 
   const onSubmit = async event  => {
     event.preventDefault();
@@ -44,7 +44,7 @@ const UpdateUserPage = () => {
       const payload = { userName, email, password, languages, level, photo, country };
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/users/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/users/${id}`,
           
         {
           method: "PUT",
@@ -67,7 +67,8 @@ const UpdateUserPage = () => {
   };
 
 
-  
+   
+
 
   return (
     <>
