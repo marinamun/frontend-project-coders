@@ -1,22 +1,17 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 const Profile = () => {
   // To protect the user page. Only the logged-in user can access it.
   const { fetchWithToken, user } = useContext(AuthContext);
 
- /*  useEffect(() => {
-    fetchWithToken("/users", (parsed) => {
-      console.log(parsed);
-    });
-  }, []) */
 
   const UserProfile = () => {
     const navigate = useNavigate();
     const { userId } = useParams();
-    const [user, setUser] = useState();
+    const [oneUser, setOneUser] = useState(null);
 
     const fetchUser = async () => {
       try {
@@ -27,7 +22,7 @@ const Profile = () => {
         if (responseFromBackend.ok) {
           const parsedFromBackend = await responseFromBackend.json();
           console.log(parsedFromBackend);
-          setUser(parsedFromBackend.user);
+          setOneUser(parsedFromBackend.oneUser);
         } else {
           console.error("Failed to fetch user data");
         }
@@ -38,25 +33,27 @@ const Profile = () => {
 
     useEffect(() => {
       fetchUser();
-    }, [userId]);
+    }, []);
 
-    return user ? (
+    return oneUser ? (
       <>
         <Navbar />
         <h1>This is the user's page</h1>
-        <img src={user.photo} alt="profile photo" />
-        <h3>{user.username}</h3>
-        <p>{user.email}</p>
-        <p>{user.country}</p>
+        <img src={oneUser.photo} alt="profile photo" />
+        <h3>{oneUser.username}</h3>
+        <p>{oneUser.email}</p>
+        <p>{oneUser.country}</p>
+        <p>{oneUser.languages}</p>
+        <p>{oneUser.level}</p>
 
-        <button>Update</button>
+        <Link to={`/users/${userId}/update`}>
+        <button type='button'>Update</button>
+      </Link>
       </>
     ) : (
       <h1>Loading...</h1>
     );
   }
-
-  return <UserProfile />;
 }
 
 export default Profile;
