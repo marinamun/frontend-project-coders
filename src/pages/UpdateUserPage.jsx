@@ -14,44 +14,11 @@ const UpdateUserPage = () => {
     const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const payload = { userName, email, password, languages, level, photo, country };
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/updateuserpage${
-          isUpdate ? `/${id}` : ""
-        }`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
-
-      if (response.status === 400) {
-        const parsed = await response.json();
-        throw new Error(parsed.message);
-      }
-
-      if (response.status === 200) {
-        const parsed = await response.json();
-        navigate("/profile");
-      }
-    } catch (error) {
-      console.log(error);
-      setErrorMessage(error.message);
-    }
-  };
-
 
    const fetchUser = async () => {
      try {
        const response = await fetch(
-         `${import.meta.env.VITE_API_URL}/updateuserpage${isUpdate ? `/${id}` : ""}`
+         `${import.meta.env.VITE_API_URL}/users/${id}`
        );
        if (response.ok) {
          const user = await response.json();
@@ -67,10 +34,40 @@ const UpdateUserPage = () => {
      }
    };
    useEffect(() => {
-     if (isUpdate) {
-       fetchUser();
-     }
+     fetchUser();
    }, []);
+   
+
+  const onSubmit = async event  => {
+    event.preventDefault();
+    try {
+      const payload = { userName, email, password, languages, level, photo, country };
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/users/${id}`,
+          
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+
+      if (response.status === 200) {
+        const parsed = await response.json();
+        navigate(`/user/${id}`)
+      }
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.message);
+    }
+  };
+
+
+  
 
   return (
     <>
@@ -119,22 +116,18 @@ const UpdateUserPage = () => {
         <div>
           <label>Level</label>
 
-        {/* <select
-            value={level}
-            onChange={(event) => setLanguages(event.target.value)}
-          > */}
-            <option value="JavaScript">"JavaScript"</option>
           <select
-            value={country}
-            onChange={(event) => setCountry(event.target.value)}
+            value={level}
+            onChange={(event) => setLevel(event.target.value)}
           >
-            <option value="France">"France"</option>
-            <option value="India">"India"</option>
-            <option value="Canada">"Canada"</option>
-            <option value="China">"China"</option>
+            <option value="Learner">"Learner"</option>
+            <option value="Junior">"Junior"</option>
+            <option value="Senior">"Senior"</option>
           </select>
         </div>
-
+        <label>Country
+          <input value={country} onChange={(event) => setCountry(event.target)}/>
+        </label>
         <div>
           <label>Photo URL:</label>
           <input
@@ -144,9 +137,7 @@ const UpdateUserPage = () => {
           />
         </div>
 
-        <button type="submit">
-          Update
-        </button>
+        <button type="submit">Update</button>
       </form>
     </>
   );

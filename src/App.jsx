@@ -8,6 +8,8 @@ import Feed from "./pages/Feed";
 import QuestionDetailsPage from "./pages/QuestionDetailsPage";
 import PostYourQuestions from "./pages/PostYourQuestion";
 import PostYourQuestion from "./pages/PostYourQuestion";
+import UpdateUserPage from "./pages/UpdateUserPage";
+
 function App() {
   return (
     <>
@@ -56,6 +58,16 @@ function App() {
           element={
             <PrivateRoute>
               <PostYourQuestion />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Route to add a question*/}
+        <Route
+          path="/users/:id/update"
+          element={
+            <PrivateRoute>
+              <UpdateUserPage />
             </PrivateRoute>
           }
         />
