@@ -13,11 +13,16 @@ const PostYourQuestions = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [file, setFile] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const payload = { title, text, file };
+    const image = e.target.image.files[0];
+    const formData = new FormData();
+    formData.append("imageUrl", image);
+    formData.append("text", text);
+    formData.append("title", title);
+
+    const payload = { title, text };
     const currentToken = localStorage.getItem("authToken");
 
     try {
@@ -30,7 +35,7 @@ const PostYourQuestions = () => {
 
             Authorization: `Bearer ${currentToken}`,
           },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(formData),
         }
       );
       if (response.status === 201) {
@@ -62,14 +67,8 @@ const PostYourQuestions = () => {
             onChange={(event) => setText(event.target.value)}
           />
         </label>
-        <label>
-          File
-          <input
-            value={file}
-            type=""
-            onChange={(event) => setFile(event.target.value)}
-          />
-        </label>
+        <input type="file" name="image" />
+
         <button type="submit">Submit</button>
       </form>
     </>
