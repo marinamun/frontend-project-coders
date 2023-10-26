@@ -10,16 +10,42 @@ const UpdateUserPage = () => {
   const [languages, setLanguages] = useState("");
   const [level, setLevel] = useState("");
   const [photo, setPhoto] = useState("");
+   const [country, setCountry] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const onSubmit = async (event) => {
+
+  const fetchUser = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/${id}`
+      );
+      if (response.ok) {
+        const user = await response.json();
+        setUserName(user.userName);
+        setEmail(user.email);
+        setPassword(user.password);
+        setLanguages(user.languages);
+        setPhoto(user.photo);
+        setLevel(user.level);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+
+  const onSubmit = async event  => {
     event.preventDefault();
     try {
-      const payload = { userName, email, password, languages, level, photo };
+      const payload = { userName, email, password, languages, level, photo, country };
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/updateuserpage`,
+        `${import.meta.env.VITE_API_URL}/api/users/${id}`,
+          
         {
           method: "PUT",
           headers: {
@@ -29,14 +55,10 @@ const UpdateUserPage = () => {
         }
       );
 
-      if (response.status === 400) {
-        const parsed = await response.json();
-        throw new Error(parsed.message);
-      }
 
       if (response.status === 200) {
         const parsed = await response.json();
-        navigate("/profile");
+        navigate(`/user/${id}`)
       }
     } catch (error) {
       console.log(error);
@@ -44,81 +66,79 @@ const UpdateUserPage = () => {
     }
   };
 
+
+   
+
+
   return (
     <>
-      <form className="form-login" onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="userName">Username</label>
+      <form onSubmit={onSubmit}>
+        <div>
+          <label>Username</label>
           <input
-className="cats-input"
             type="text"
-            name="userName"
             value={userName}
             onChange={(event) => setUserName(event.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+        <div>
+          <label>Email</label>
           <input
-className="cats-input"
             type="text"
-            name="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+        <div>
+          <label>Password</label>
           <input
-className="cats-input"
             type="password"
-            name="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="languages">Languages</label>
+        <div>
+          <label>Languages</label>
           <select
-            name="languages"
             value={languages}
             onChange={(event) => setLanguages(event.target.value)}
           >
-            <option value="english">English</option>
-            <option value="spanish">Spanish</option>
-            <option value="french">French</option>
-            <option value="german">German</option>
+            <option value="JavaScript">"JavaScript"</option>
+            <option value="Python">"Python"</option>
+            <option value="Java">"Java"</option>
+            <option value="C++">"C++"</option>
+            <option value="C#">"C#"</option>
           </select>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="level">Level</label>
-          <input
-            className="cats-input"
-            type="text"
-            name="level"
+        <div>
+          <label>Level</label>
+
+          <select
             value={level}
             onChange={(event) => setLevel(event.target.value)}
-          />
+          >
+            <option value="Learner">"Learner"</option>
+            <option value="Junior">"Junior"</option>
+            <option value="Senior">"Senior"</option>
+          </select>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="photo">Photo URL:</label>
+        <label>Country
+          <input value={country} onChange={(event) => setCountry(event.target)}/>
+        </label>
+        <div>
+          <label>Photo URL:</label>
           <input
-className="cats-input"
             type="text"
-            name="photo"
             value={photo}
             onChange={(event) => setPhoto(event.target.value)}
           />
         </div>
 
-        <button className="btn btn-primary" type="submit">
-          Update
-        </button>
+        <button type="submit">Update</button>
       </form>
     </>
   );
