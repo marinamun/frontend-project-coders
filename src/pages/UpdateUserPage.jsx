@@ -15,6 +15,31 @@ const UpdateUserPage = () => {
   const navigate = useNavigate();
   const {user} = useContext(AuthContext);
 
+  const fetchUser = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`
+      );
+      
+      if (response.ok) {
+        const user = await response.json();
+        console.log(user)
+        setUserName(user.user.username);
+        setEmail(user.user.email);
+        setPassword(user.user.password);
+        setLanguages(user.user.languages);
+        setPhoto(user.user.photo);
+        setLevel(user.user.level);
+        setCountry(user.user.country);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   const onSubmit = async event  => {
     event.preventDefault();
 
@@ -35,37 +60,13 @@ const UpdateUserPage = () => {
 
       if (response.status === 200) {
         await response.json();
-        navigate(`/users/${user.userId}`)
+        navigate(`/users`)
       }
     } catch (error) {
       console.log(error);
       setErrorMessage(error.message);
     }
   };
-
-  const fetchUser = async () => {
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`
-      );
-      
-      if (response.ok) {
-        const user = await response.json();
-        console.log(user)
-        setUserName(user.user.username);
-        setEmail(user.user.email);
-        setPassword(user.user.password);
-        setLanguages(user.user.languages);
-        setPhoto(user.user.photo);
-        setLevel(user.user.level);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchUser();
-  }, []);
 
 
   return (
