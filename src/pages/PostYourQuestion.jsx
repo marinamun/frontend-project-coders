@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 const PostYourQuestion = () => {
   const { fetchWithToken } = useContext(AuthContext);
