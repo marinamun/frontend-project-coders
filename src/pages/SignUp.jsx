@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const SignUp = () => {
+  const navigate = useNavigate()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
@@ -9,7 +10,7 @@ const SignUp = () => {
     const handleSubmit = async event => {
         event.preventDefault()
         const payload = {username, email, password}
-
+      console.log(import.meta.env.VITE_API_URL)
         try {
             const response = await fetch (`${import.meta.env.VITE_API_URL}/auth/signup`, {
                 method: 'POST',
@@ -21,6 +22,7 @@ const SignUp = () => {
             if (response.status === 201) {
                 const parsed = await response.json()
                 console.log(parsed)
+                navigate('/login')
             }
         } catch (error) {
             console.log(error)
@@ -48,9 +50,7 @@ const SignUp = () => {
                 type='password'
               />
             </label>
-            <Link to="/login">
             <button type='submit'>Register</button>
-            </Link>
           </form>
         </>
       )
