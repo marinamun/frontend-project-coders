@@ -16,10 +16,9 @@ const QuestionDetailsPage = () => {
         setQuestion(parsedFromBackend.question);
       }
     } catch (error) {
-      console.log(error)
-        }
+      console.log(error);
     }
-  
+  };
 
   useEffect(() => {
     fetchQuestion();
@@ -34,12 +33,12 @@ const QuestionDetailsPage = () => {
         <p>{question.text}</p>
         <p>{question.owner.username}</p>
         <p>{question.timestamps}</p>
+        <img src={question.image} />
       </div>
-
     </>
-  )  : (
+  ) : (
     <h1>Loading</h1>
   );
-}
+};
 
 export default QuestionDetailsPage;

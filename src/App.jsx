@@ -6,7 +6,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import Homepage from "./pages/Homepage";
 import Feed from "./pages/Feed";
 import QuestionDetailsPage from "./pages/QuestionDetailsPage";
-import PostYourQuestions from "./pages/PostYourQuestion";
 import PostYourQuestion from "./pages/PostYourQuestion";
 import UpdateUserPage from "./pages/UpdateUserPage";
 
@@ -35,7 +34,7 @@ function App() {
             </PrivateRoute>
           }
         />
-      
+
         {/* Route to the see details of one user*/}
         <Route
           path="/users"
