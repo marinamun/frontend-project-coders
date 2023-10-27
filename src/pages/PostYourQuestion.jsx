@@ -19,7 +19,7 @@ const PostYourQuestion = () => {
     event.preventDefault();
     const image = event.target.image.files[0];
     const formData = new FormData();
-    formData.append("image", image);
+    formData.append("imageUrl", image);
     formData.append("text", text);
     formData.append("title", title);
 
@@ -29,13 +29,13 @@ const PostYourQuestion = () => {
     axios
       .post(`${import.meta.env.VITE_API_URL}/api/questions/new`, formData, {
         headers: {
-          "Content-type": "multipart/form-data",///removed json!!!
+          /*"Content-type": "multipart/form-data", ///removed json!!!*/
 
           Authorization: `Bearer ${currentToken}`,
         },
       })
-      .then(() => {
-        navigate(`/feed`);
+      .then((res) => {
+        navigate(`/feed/${res.data.question._id}`); //add question id
       })
       .catch((error) => {
         console.log("Error posting question:", error);
