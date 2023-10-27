@@ -20,9 +20,17 @@ const PostYourQuestion = () => {
     event.preventDefault();
     const image = event.target.image.files[0];
     const formData = new FormData();
-    formData.append("imageUrl", image);
+    // formData.append("imageUrl", image);
     formData.append("text", text);
     formData.append("title", title);
+
+     const imageInput = event.target.querySelector('input[type="file"]');
+  if (imageInput.files.length > 0) {
+    formData.append("imageUrl", imageInput.files[0]);
+  }
+  console.log("Image Input:", imageInput);
+  console.log("Form Data:", formData);
+
 
     /*const payload = { title, text };*/
     const currentToken = localStorage.getItem("authToken");
