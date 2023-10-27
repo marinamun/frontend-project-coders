@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import navbar from "../components/Navbar"
+import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+
 const SignUp = () => {
   const navigate = useNavigate()
     const [username, setUsername] = useState('')
