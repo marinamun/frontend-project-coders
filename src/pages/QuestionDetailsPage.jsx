@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-//import Answers from "../components/Answers";
+import Navbar from "../components/Navbar";
 
 const QuestionDetailsPage = () => {
   const { questionId } = useParams();
