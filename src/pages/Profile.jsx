@@ -32,7 +32,7 @@ const Profile = () => {
 
     const fetchQuestions = async () => {
       try {
-        const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/questions?userId=${user.userId}`);
+        const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${user.userId}/questions`);
         if(responseFromBackend.ok) {
           const parsedFromBackend = await responseFromBackend.json()
           console.log(parsedFromBackend)
@@ -42,7 +42,7 @@ const Profile = () => {
             console.error("Failed to fetch question data");
         } */
         setUserQuestions(parsedFromBackend.userQuestions)
-        console.log(userQuestions)
+        console.log(parsedFromBackend.userQuestions)
       } else {
         console.error("Failed to fetch question data");
       }

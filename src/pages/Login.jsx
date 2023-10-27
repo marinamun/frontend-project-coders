@@ -41,6 +41,7 @@ const Login = () => {
 
   return (
     <>
+    <Navbar />
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>

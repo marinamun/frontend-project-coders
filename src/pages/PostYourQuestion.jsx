@@ -49,6 +49,7 @@ const PostYourQuestions = () => {
   };
   return (
     <>
+    <Navbar />
       <h1>Ask your question!</h1>
       <form onSubmit={onSubmit}>
         <label>

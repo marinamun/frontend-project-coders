@@ -27,6 +27,7 @@ const QuestionDetailsPage = () => {
 
   return question ? (
     <>
+      <Navbar />
       <h1>Question Details Page</h1>
       <div>
         <h2>{question.title}</h2>
