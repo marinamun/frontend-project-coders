@@ -1,8 +1,9 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
+import axios from "axios";
 
-const PostYourQuestions = () => {
+const PostYourQuestion = () => {
   const { fetchWithToken } = useContext(AuthContext);
 
   useEffect(() => {
@@ -16,16 +17,32 @@ const PostYourQuestions = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const image = e.target.image.files[0];
+    const image = event.target.image.files[0];
     const formData = new FormData();
-    formData.append("imageUrl", image);
+    formData.append("image", image);
     formData.append("text", text);
     formData.append("title", title);
 
-    const payload = { title, text };
+    /*const payload = { title, text };*/
     const currentToken = localStorage.getItem("authToken");
 
-    try {
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/api/questions/new`, formData, {
+        headers: {
+          "Content-type": "multipart/form-data",///removed json!!!
+
+          Authorization: `Bearer ${currentToken}`,
+        },
+      })
+      .then(() => {
+        navigate(`/feed`);
+      })
+      .catch((error) => {
+        console.log("Error posting question:", error);
+      });
+
+    /*try {
+
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/new`,
         {
@@ -35,7 +52,7 @@ const PostYourQuestions = () => {
 
             Authorization: `Bearer ${currentToken}`,
           },
-          body: JSON.stringify(formData),
+          body: formData,
         }
       );
       if (response.status === 201) {
@@ -45,7 +62,7 @@ const PostYourQuestions = () => {
       }
     } catch (error) {
       console.log(error);
-    }
+    }*/
   };
   return (
     <>
@@ -74,4 +91,4 @@ const PostYourQuestions = () => {
     </>
   );
 };
-export default PostYourQuestions;
+export default PostYourQuestion;
