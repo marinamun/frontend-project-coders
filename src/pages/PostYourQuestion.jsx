@@ -20,7 +20,9 @@ const PostYourQuestion = () => {
     event.preventDefault();
     const image = event.target.image.files[0];
     const formData = new FormData();
-    formData.append("imageUrl", image);
+    if (image) {
+      formData.append("imageUrl", image);
+    }
     formData.append("text", text);
     formData.append("title", title);
 

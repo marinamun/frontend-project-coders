@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { AbortedDeferredError, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
@@ -66,11 +66,11 @@ const Feed = () => {
                     <h3>{question.title}</h3>
                     <p>{question.text}</p>
                     <p>{question.photo}</p>
-                  </Link>
+                   </Link> 
                 </div>
                 <div>
                   <button>Like</button>
-                  <Link to={`/feed/${question._id}/answers}`}>
+                  <Link to={`/feed/${question._id}/answers`}>
                     <button>Comments</button>
                   </Link>
                   <button>Share</button>
