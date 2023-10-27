@@ -31,6 +31,7 @@ const SignUp = () => {
 
     return (
         <>
+        <Navbar />
           <h1>Signup</h1>
           <form onSubmit={handleSubmit}>
             <label>

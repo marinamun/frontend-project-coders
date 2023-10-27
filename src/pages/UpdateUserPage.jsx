@@ -71,6 +71,7 @@ const UpdateUserPage = () => {
 
   return (
     <>
+    <Navbar />
       <form onSubmit={onSubmit}>
         <div>
           <label>Username</label>

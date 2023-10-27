@@ -27,14 +27,15 @@ const QuestionDetailsPage = () => {
 
   return question ? (
     <>
+      <Navbar />
       <h1>Question Details Page</h1>
       <div>
         <h2>{question.title}</h2>
         <p>{question.text}</p>
         <p>{question.owner.username}</p>
         <p>{question.timestamps}</p>
+        <img src={question.image} />
       </div>
-      {/* <Answers /> */}
     </>
   ) : (
     <h1>Loading</h1>
