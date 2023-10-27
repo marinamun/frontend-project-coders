@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Answers from "../components/Answers";
+
 
 const QuestionDetailsPage = () => {
   const { questionId } = useParams();
@@ -34,6 +36,7 @@ const QuestionDetailsPage = () => {
         <p>{question.owner.username}</p>
         <p>{question.timestamps}</p>
       </div>
+      <Answers />
 
     </>
   )  : (
