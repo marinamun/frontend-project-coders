@@ -6,12 +6,11 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 const Profile = () => {
   // To protect the user page. Only the logged-in user can access it.
   const { fetchWithToken, user } = useContext(AuthContext);
-
-
   
     const navigate = useNavigate();
-    const { userId } = useParams();
+    //const { userId } = useParams();
     const [oneUser, setOneUser] = useState(null);
+    const [userQuestions, setUserQuestions] = useState([]);
     console.log(user);
 
     const fetchUser = async () => {
@@ -31,9 +30,31 @@ const Profile = () => {
       }
     }
 
+    const fetchQuestions = async () => {
+      try {
+        const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/questions?userId=${user.userId}`);
+        if(responseFromBackend.ok) {
+          const parsedFromBackend = await responseFromBackend.json()
+          console.log(parsedFromBackend)
+          /* if(Question.owner._id === user.userId){
+            setUserQuestions(parsedFromBackend.userQuestions)
+          }else {
+            console.error("Failed to fetch question data");
+        } */
+        setUserQuestions(parsedFromBackend.userQuestions)
+        console.log(userQuestions)
+      } else {
+        console.error("Failed to fetch question data");
+      }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     useEffect(() => {
       fetchUser();
-    }, []);
+      fetchQuestions();
+    }, [user.userId]);
 
     return oneUser ? (
       <>
@@ -49,6 +70,14 @@ const Profile = () => {
         <Link to={`/users/update`}>
         <button type='button'>Update</button>
       </Link>
+
+      <h1>Questions of the user</h1>
+      {userQuestions && userQuestions.map((question) => (
+        <div key={question._id}>
+          <p>{question.title}</p>
+          {/* Display other question details as needed */}
+        </div>
+      ))}
       </>
     ) : (
       <h1>Loading...</h1>
