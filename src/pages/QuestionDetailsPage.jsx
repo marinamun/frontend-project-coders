@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Answers from "../components/Answers";
-
+//import Answers from "../components/Answers";
 
 const QuestionDetailsPage = () => {
   const { questionId } = useParams();
@@ -18,10 +17,9 @@ const QuestionDetailsPage = () => {
         setQuestion(parsedFromBackend.question);
       }
     } catch (error) {
-      console.log(error)
-        }
+      console.log(error);
     }
-  
+  };
 
   useEffect(() => {
     fetchQuestion();
@@ -36,12 +34,11 @@ const QuestionDetailsPage = () => {
         <p>{question.owner.username}</p>
         <p>{question.timestamps}</p>
       </div>
-      <Answers />
-
+      {/* <Answers /> */}
     </>
-  )  : (
+  ) : (
     <h1>Loading</h1>
   );
-}
+};
 
 export default QuestionDetailsPage;
