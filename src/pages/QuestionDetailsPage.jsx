@@ -33,7 +33,7 @@ const QuestionDetailsPage = () => {
       if(responseFromBackend.ok) {
         const parsedFromBackend = await responseFromBackend.json()
         console.log(parsedFromBackend)
-      setUserAnswers(parsedFromBackend.userAnswers)
+      setUserAnswers(parsedFromBackend.question)
       console.log(parsedFromBackend.userAnswers)
     } else {
       console.error("Failed to fetch answer data")
