@@ -15,6 +15,7 @@ const Feed = () => {
         const parsed = await responseFromBackend.json();
         console.log(parsed)
         setQuestions(parsed.allQuestions);
+        //allQuestions comes from the backend
       }
     } catch (error) {
       console.log(error);
@@ -72,7 +73,7 @@ const Feed = () => {
                    </Link> 
                 </div>
                 <div>
-                  <Link to={`/feed/${question._id}/answers`}>
+                  <Link to={`/feed/${question._id}`}>
                     <button>Comments</button>
                   </Link>
                   <button>Share</button>

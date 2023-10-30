@@ -33,7 +33,7 @@ const QuestionDetailsPage = () => {
       if(responseFromBackend.ok) {
         const parsedFromBackend = await responseFromBackend.json()
         console.log(parsedFromBackend)
-      setUserAnswers(parsedFromBackend.question)
+        setUserAnswers(parsedFromBackend.userAnswers)
       console.log(parsedFromBackend.userAnswers)
     } else {
       console.error("Failed to fetch answer data")
@@ -62,12 +62,12 @@ const QuestionDetailsPage = () => {
         </div>
         <AllAnswers answer={answer} setAnswer={setAnswer}/>
 
-      {/*   {console.log(answer)};
+        {/* {console.log(answer)};
 
         {answer && answer.map((oneAnswer) => (
         <div key={oneAnswer._id}>
           <p>{oneAnswer.text}</p>
-          </div> ))} */}
+          </div> ))} */} 
 
       
     </>
