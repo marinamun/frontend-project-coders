@@ -28,13 +28,14 @@ const QuestionDetailsPage = () => {
   };
 
 
-  const fetchAnswers = async () => {
+  /* const fetchAnswers = async () => {
+
     try {
       const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/questions/answers/${answerId}`)
       if(responseFromBackend.ok) {
         const parsedFromBackend = await responseFromBackend.json()
         console.log(parsedFromBackend)
-        setAnswer(parsedFromBackend.userAnswers)
+        setUserAnswers(parsedFromBackend.userAnswers)
       console.log(parsedFromBackend.userAnswers)
     } else {
       console.error("Failed to fetch answer data")
@@ -42,11 +43,11 @@ const QuestionDetailsPage = () => {
     } catch (error) {
       console.error(error);
     }
-  }
+  } */
 
   useEffect(() => {
     fetchQuestion();
-    fetchAnswers();
+    //fetchAnswers();
   }, [questionId]);
 
   return question ? (
@@ -64,12 +65,27 @@ const QuestionDetailsPage = () => {
         </div>
         <AllAnswers answer={answer} setAnswer={setAnswer}/>
 
-         {console.log(userAnswers)}
+        {question.answers.map((oneAnswer) => {
+          return (
+            <div key={oneAnswer._id}>
+            <p>{oneAnswer.text}</p>
+            <img src={oneAnswer.image} />
+          </div>
+          )
+          
+        })}
+
+       {/*   {console.log(userAnswers)}
          {console.log(answer)}
 
           {userAnswers && userAnswers.map((oneAnswer)=>{
+            <div key={oneAnswer._id}>
+              return (
             <p>{oneAnswer.text}</p>
-          })}
+            )
+            </div>
+            
+          })} */}
 
       
     </>
