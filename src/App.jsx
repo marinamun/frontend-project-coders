@@ -53,7 +53,7 @@ function App() {
           }
         />
 
-        {/* Route to add a question*/}
+        {/* Route to update user*/}
         <Route
           path="/users/update"
           element={
