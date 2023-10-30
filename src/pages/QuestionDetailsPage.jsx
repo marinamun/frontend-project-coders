@@ -3,13 +3,11 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import AllAnswers from "../components/AllAnswers";
 
-
-
 const QuestionDetailsPage = () => {
   const { questionId } = useParams();
-  const { answerId } = useParams();
+  //const { answerId } = useParams();
   const [question, setQuestion] = useState();
-  const [userAnswers, setUserAnswers] = useState([]);
+  //const [userAnswers, setUserAnswers] = useState([]);
   const [answer, setAnswer] = useState('');
 
   const fetchQuestion = async () => {
@@ -26,7 +24,6 @@ const QuestionDetailsPage = () => {
       console.log(error);
     }
   };
-
 
   /* const fetchAnswers = async () => {
 
