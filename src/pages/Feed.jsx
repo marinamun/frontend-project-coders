@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { AbortedDeferredError, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
-  const [users, setUsers] = useState([]);
+  //const [users, setUsers] = useState([]);
 
   const getAllQuestions = async () => {
     try {
       const responseFromBackend = await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions`
       );
-      if (responseFromBackend.ok) {
+      if (responseFromBackend.status === 201) {
         const parsed = await responseFromBackend.json();
-        setQuestions(parsed.questions);
+        console.log(parsed)
+        setQuestions(parsed.allQuestions);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getAllUsers = async () => {
+ /*  const getAllUsers = async () => {
     try {
       const responseFromBackend = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users`
@@ -32,11 +33,11 @@ const Feed = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
 
   useEffect(() => {
     getAllQuestions();
-    getAllUsers();
+    //getAllUsers();
   }, []);
 
   return (
@@ -55,30 +56,33 @@ const Feed = () => {
           <button>+</button>
         </Link>
       </div>
+      <div>
       <ul className="post">
         {questions &&
-          questions.map((question) => (
+          questions.map((question) => {
+            return (
             <li key={question._id}>
               <div>
                 <div>
                   <Link to={`/feed/${question._id}`}>
-                    <img src={question.owner.photo} />
+                    {/* <img src={question.owner.photo} /> */}
                     <h3>{question.title}</h3>
                     <p>{question.text}</p>
                     <p>{question.photo}</p>
-                  </Link>
+                   </Link> 
                 </div>
                 <div>
-                  <button>Like</button>
-                  <Link to={`/feed/${question._id}/answers}`}>
+                  <Link to={`/feed/${question._id}/answers`}>
                     <button>Comments</button>
                   </Link>
                   <button>Share</button>
                 </div>
               </div>
             </li>
-          ))}
+          );
+        })}
       </ul>
+      </div>
     </>
   );
 };
