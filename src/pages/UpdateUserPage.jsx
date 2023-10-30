@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 
 const UpdateUserPage = () => {
-  //const { userId } = useParams();
+  const { userId } = useParams();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  //const [password, setPassword] = useState("");
   const [languages, setLanguages] = useState([
     "Javascript",
     "Python",
@@ -19,7 +19,7 @@ const UpdateUserPage = () => {
   const [level, setLevel] = useState("");
   const [photo, setPhoto] = useState("");
   const [country, setCountry] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  //const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
@@ -34,7 +34,6 @@ const UpdateUserPage = () => {
         console.log(user);
         setUserName(user.user.username);
         setEmail(user.user.email);
-
         setLanguages(user.user.languages);
         setPhoto(user.user.photo);
         setLevel(user.user.level);
@@ -84,7 +83,10 @@ const UpdateUserPage = () => {
         navigate(`/users`);
       })
       .catch((error) => {
-        console.log("Error updating user:", error);
+        if (error.response) {
+          console.log("Server error data:", error.response.data);
+        } else {
+          console.log("Error updating user:", error);}
       });
 
     /*try {
