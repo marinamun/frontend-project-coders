@@ -2,32 +2,39 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
+import axios from "axios";
 
 const UpdateUserPage = () => {
   //const { userId } = useParams();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [languages, setLanguages] = useState(['Javascript', 'Python', 'Java', 'C++', 'C#']);
+  const [languages, setLanguages] = useState([
+    "Javascript",
+    "Python",
+    "Java",
+    "C++",
+    "C#",
+  ]);
   const [level, setLevel] = useState("");
   const [photo, setPhoto] = useState("");
   const [country, setCountry] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const fetchUser = async () => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`
       );
-      
+
       if (response.ok) {
         const user = await response.json();
-        console.log(user)
+        console.log(user);
         setUserName(user.user.username);
         setEmail(user.user.email);
-        setPassword(user.user.password);
+
         setLanguages(user.user.languages);
         setPhoto(user.user.photo);
         setLevel(user.user.level);
@@ -37,19 +44,53 @@ const UpdateUserPage = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchUser();
   }, []);
 
-  const onSubmit = async event  => {
+  const onSubmit = async (event) => {
     event.preventDefault();
 
-    const payload = { userName, email, password, languages, level, photo, country };
+    /*const payload = { userName, email, languages, level, photo, country };*/
+    const currentToken = localStorage.getItem("authToken");
 
-    try {
+    const photo = event.target.image.files[0];
+
+    const formData = new FormData();
+
+    if (photo) {
+      formData.append("imageUrl", photo);
+    }
+    formData.append("username", userName);
+    formData.append("email", email);
+    formData.append("languages", languages);
+    formData.append("level", level);
+    formData.append("country", country);
+    console.log(formData);
+    axios
+      .put(
+        `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`,
+        formData,
+        {
+          headers: {
+            /*"Content-type": "multipart/form-data", ///removed json!!!*/
+
+            Authorization: `Bearer ${currentToken}`,
+          },
+        }
+      )
+      .then((res) => {
+        navigate(`/users`);
+      })
+      .catch((error) => {
+        console.log("Error updating user:", error);
+      });
+
+    /*try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`,
-          
+
         {
           method: "PUT",
           headers: {
@@ -61,18 +102,18 @@ const UpdateUserPage = () => {
 
       if (response.status === 200) {
         await response.json();
-        navigate(`/users`)
+        navigate(`/users`);
       }
     } catch (error) {
       console.log(error);
       setErrorMessage(error.message);
     }
+    */
   };
-
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <form onSubmit={onSubmit}>
         <div>
           <label>Username</label>
@@ -105,11 +146,11 @@ const UpdateUserPage = () => {
           <select
             value={languages}
             multiple={true}
-            onChange={(e) => 
-              {const options = [...e.currentTarget.selectedOptions];
-               const values = options.map(option => option.value)
-                setLanguages(values);
-              }}
+            onChange={(e) => {
+              const options = [...e.currentTarget.selectedOptions];
+              const values = options.map((option) => option.value);
+              setLanguages(values);
+            }}
           >
             <option value="JavaScript">"JavaScript"</option>
             <option value="Python">"Python"</option>
@@ -117,7 +158,7 @@ const UpdateUserPage = () => {
             <option value="C++">"C++"</option>
             <option value="C#">"C#"</option>
           </select>
-            </div>
+        </div>
 
         <div>
           <label>Level</label>
@@ -131,15 +172,20 @@ const UpdateUserPage = () => {
             <option value="Senior">"Senior"</option>
           </select>
         </div>
-        <label>Country
-          <input value={country} onChange={(event) => setCountry(event.currentTarget.value)}/>
+        <label>
+          Country
+          <input
+            value={country}
+            onChange={(event) => setCountry(event.currentTarget.value)}
+          />
         </label>
         <div>
           <label>Photo URL:</label>
           <input
-            type="text"
-            value={photo}
-            onChange={(event) => setPhoto(event.currentTarget.value)}
+            type="file"
+            //value={photo}
+            name="image"
+            //onChange={(event) => setPhoto(event.currentTarget.value)}
           />
         </div>
 
