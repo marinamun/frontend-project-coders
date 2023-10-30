@@ -7,6 +7,7 @@ import AllAnswers from "../components/AllAnswers";
 
 const QuestionDetailsPage = () => {
   const { questionId } = useParams();
+  const { answerId } = useParams();
   const [question, setQuestion] = useState();
   const [userAnswers, setUserAnswers] = useState([]);
   const [answer, setAnswer] = useState('');
@@ -29,11 +30,11 @@ const QuestionDetailsPage = () => {
 
   const fetchAnswers = async () => {
     try {
-      const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/questions/answers/${questionId}`)
+      const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/questions/answers/${answerId}`)
       if(responseFromBackend.ok) {
         const parsedFromBackend = await responseFromBackend.json()
         console.log(parsedFromBackend)
-        setUserAnswers(parsedFromBackend.userAnswers)
+        setAnswer(parsedFromBackend.userAnswers)
       console.log(parsedFromBackend.userAnswers)
     } else {
       console.error("Failed to fetch answer data")
@@ -63,12 +64,12 @@ const QuestionDetailsPage = () => {
         </div>
         <AllAnswers answer={answer} setAnswer={setAnswer}/>
 
-        {/* {console.log(answer)};
+         {console.log(userAnswers)}
+         {console.log(answer)}
 
-        {answer && answer.map((oneAnswer) => (
-        <div key={oneAnswer._id}>
-          <p>{oneAnswer.text}</p>
-          </div> ))} */} 
+          {userAnswers && userAnswers.map((oneAnswer)=>{
+            <p>{oneAnswer.text}</p>
+          })}
 
       
     </>
