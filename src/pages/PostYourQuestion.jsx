@@ -6,70 +6,52 @@ import Navbar from "../components/Navbar";
 
 const PostYourQuestion = () => {
   const { fetchWithToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchWithToken("/users", (parsed) => {
       console.log(parsed);
     });
   }, []);
-  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [language, setLanguage] = useState("JavaScript");
 
   const onSubmit = async (event) => {
     event.preventDefault();
     const image = event.target.image.files[0];
     const formData = new FormData();
+
     if (image) {
       formData.append("imageUrl", image);
     }
+
     formData.append("text", text);
     formData.append("title", title);
+    formData.append("languages", language);
 
-    /*const payload = { title, text };*/
+    console.log(formData);
+
     const currentToken = localStorage.getItem("authToken");
 
     axios
       .post(`${import.meta.env.VITE_API_URL}/api/questions/new`, formData, {
         headers: {
-          /*"Content-type": "multipart/form-data", ///removed json!!!*/
-
           Authorization: `Bearer ${currentToken}`,
         },
       })
       .then((res) => {
-        navigate(`/feed/${res.data.question._id}`); //add question id
+        navigate(`/feed/${res.data.question._id}`);
       })
       .catch((error) => {
         console.log("Error posting question:", error);
       });
-
-    /*try {
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/questions/new`,
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-
-            Authorization: `Bearer ${currentToken}`,
-          },
-          body: formData,
-        }
-      );
-      if (response.status === 201) {
-        const yourQuestion = await response.json();
-        console.log(yourQuestion);
-        navigate(`/feed/${yourQuestion.question._id}`);
-      }
-    } catch (error) {
-      console.log(error);
-    }*/
   };
+
   return (
     <>
-    <Navbar />
+      <Navbar />
       <h1>Ask your question!</h1>
       <form onSubmit={onSubmit}>
         <label>
@@ -88,11 +70,24 @@ const PostYourQuestion = () => {
             onChange={(event) => setText(event.target.value)}
           />
         </label>
-        <input type="file" name="image" />
+        <label> Language:</label>
+        <select
+          name="languages"
+          value={language}
+          onChange={(event) => setLanguage(event.target.value)}
+        >
+          <option value="JavaScript">JavaScript</option>
+          <option value="Python">Python</option>
+          <option value="Java">Java</option>
+          <option value="C++">C++</option>
+          <option value="C#">C#</option>
+        </select>
 
+        <input type="file" name="image" />
         <button type="submit">Submit</button>
       </form>
     </>
   );
 };
+
 export default PostYourQuestion;

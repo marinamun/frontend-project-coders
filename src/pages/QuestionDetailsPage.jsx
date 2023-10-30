@@ -56,6 +56,7 @@ const QuestionDetailsPage = () => {
         <h2>{question.title}</h2>
         <p>{question.text}</p>
         <p>{question.owner.username}</p>
+        <p>{question.languages}</p>
         <p>{question.timestamps}</p>
         
         <img src={question.image} />
