@@ -69,7 +69,7 @@ const Feed = () => {
                     {/* <img src={question.owner.photo} /> */}
                     <h3>{question.title}</h3>
                     <p>{question.text}</p>
-                    <p>{question.photo}</p>
+                    <img src={question.image}/>
                    </Link> 
                 </div>
                 <div>

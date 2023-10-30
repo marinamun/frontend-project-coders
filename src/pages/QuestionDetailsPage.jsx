@@ -17,7 +17,7 @@ const QuestionDetailsPage = () => {
       const responseFromBackend = await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/${questionId}`
       );
-      if (responseFromBackend.ok) {
+      if (responseFromBackend.status === 201) {
         const parsedFromBackend = await responseFromBackend.json();
         console.log(parsedFromBackend);
         setQuestion(parsedFromBackend.question);
