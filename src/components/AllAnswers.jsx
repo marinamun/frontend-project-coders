@@ -24,7 +24,7 @@ const AllAnswers = ({answer, setAnswer}) => {
             },
           })
           .then((res) => {
-            navigate(`/feed/${questionId}`);
+navigate(`/feed/${questionId}`);
             console.log(res)
           })
           .catch((error) => {
