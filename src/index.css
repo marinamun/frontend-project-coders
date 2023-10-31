@@ -1,3 +1,23 @@
 :root {
-  
+  background-color: #282A36;
+  color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Nunito', sans-serif;
+}
+
+p {
+  font-family: 'Playpen Sans', cursive;
+}
+
+a, li{
+  color: white;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.deleteBtn {
+  padding: 1em;
+  border-radius: 15px;
 }

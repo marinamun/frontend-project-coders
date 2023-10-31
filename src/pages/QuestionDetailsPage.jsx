@@ -115,7 +115,7 @@ const QuestionDetailsPage = () => {
             <p>{oneAnswer.text}</p>
 
             <img src={oneAnswer.image} />
-            <button onClick={() => deleteAnswer(oneAnswer._id)}>Delete</button>
+            <button className="deleteBtn" onClick={() => deleteAnswer(oneAnswer._id)}>Delete</button>
           </div>
         );
       })}
