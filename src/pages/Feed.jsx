@@ -4,7 +4,7 @@ import {  Link } from "react-router-dom";
 
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
-  //const [users, setUsers] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState('All');
 
   const getAllQuestions = async () => {
     try {
@@ -22,23 +22,20 @@ const Feed = () => {
     }
   };
 
- /*  const getAllUsers = async () => {
-    try {
-      const responseFromBackend = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users`
-      );
-      if (responseFromBackend.ok) {
-        const parsed = await responseFromBackend.json();
-        setUsers(parsed.users);
+  const handleFilter = (event) => {
+    setSelectedLanguage(event.target.value)
+  }
+    const filteredLanguage = questions.filter((questionLanguage)=>{
+      if (selectedLanguage === 'All') {
+        return true;
       }
-    } catch (error) {
-      console.log(error);
-    }
-  }; */
-
+      return (
+         questionLanguage.languages.includes(selectedLanguage)
+      )
+    })
+  
   useEffect(() => {
     getAllQuestions();
-    //getAllUsers();
   }, []);
 
   return (
@@ -48,9 +45,18 @@ const Feed = () => {
 
       <div>
         <label>
-          Search
-          <input />
+          Filter by Language
+          <select name="languages" value={selectedLanguage}
+            onChange={handleFilter}>
+            <option value="All">All Languages</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="C++">C++</option>
+            <option value="C#">C#</option>
+          </select>
         </label>
+
       </div>
       <div>
         <Link to={"/questions/new"}>
@@ -59,8 +65,8 @@ const Feed = () => {
       </div>
       <div>
       <ul className="post">
-        {questions &&
-          questions.map((question) => {
+        {filteredLanguage &&
+          filteredLanguage.map((question) => {
             return (
             <li key={question._id}>
               <div>
