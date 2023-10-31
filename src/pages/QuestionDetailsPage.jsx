@@ -5,7 +5,7 @@ import AllAnswers from "../components/AllAnswers";
 
 const QuestionDetailsPage = () => {
   const navigate = useNavigate();
-  const { questionId } = useParams();
+  const { questionId, answerId } = useParams();
   //const { answerId } = useParams();
   const [question, setQuestion] = useState();
   //const [userAnswers, setUserAnswers] = useState([]);
@@ -63,6 +63,27 @@ const QuestionDetailsPage = () => {
     }
   };
 
+  const deleteAnswer = async (answerId) => {
+    //const currentToken = localStorage.getItem("authToken");
+    console.log('heee')
+    try {
+      await fetch(
+        `${import.meta.env.VITE_API_URL}/api/questions/answers/${answerId}`,
+        {
+          method: "DELETE"
+          /* headers: {
+            Authorization: `Bearer ${currentToken}`,
+          }, */
+        },
+        console.log('inside fetch')
+      ); 
+      console.log('the answer was deleted')
+      window.location.reload();
+    } catch (error) {
+      console.log("Answer wasn't deleted:", error);
+    }
+  };
+
   useEffect(() => {
     fetchQuestion();
     //fetchAnswers();
@@ -89,6 +110,7 @@ const QuestionDetailsPage = () => {
           <div key={oneAnswer._id}>
             <p>{oneAnswer.text}</p>
             <img src={oneAnswer.image} />
+            <button onClick={() => deleteAnswer(oneAnswer._id)}>Delete</button>
           </div>
         );
       })}

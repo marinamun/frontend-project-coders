@@ -6,7 +6,7 @@ const AllAnswers = ({answer, setAnswer}) => {
   const navigate = useNavigate()
     const {questionId} = useParams();
     const onSubmit = async event => {
-        //event.preventDefault();
+        event.preventDefault();
 
         const image = event.target.image.files[0];
         const formData = new FormData();
@@ -25,7 +25,7 @@ const AllAnswers = ({answer, setAnswer}) => {
             },
           })
           .then((res) => {
-            navigate(`/feed/${questionId}`);
+            window.location.reload();
             console.log(res)
           })
           .catch((error) => {
