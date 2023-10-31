@@ -45,22 +45,19 @@ const QuestionDetailsPage = () => {
 
   const deleteQuestion = async () => {
     const currentToken = localStorage.getItem("authToken");
-
+    console.log('heee')
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/${questionId}`,
         {
           method: "DELETE",
-          headers: {
+          /* headers: {
             Authorization: `Bearer ${currentToken}`,
-          },
+          }, */
         }
-      );
-      if (response.ok) {
-        const parsed = await response.json();
-        console.log(parsed);
-        navigate("/feed");
-      }
+      ); 
+      console.log('the question was deleted')
+      navigate("/feed");
     } catch (error) {
       console.log("Question wasn't deleted:", error);
     }
