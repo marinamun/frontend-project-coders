@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import AllAnswers from "../components/AllAnswers";
 
 const QuestionDetailsPage = () => {
+  const navigate = useNavigate();
   const { questionId } = useParams();
   //const { answerId } = useParams();
   const [question, setQuestion] = useState();
   //const [userAnswers, setUserAnswers] = useState([]);
-  const [answer, setAnswer] = useState('');
+  const [answer, setAnswer] = useState("");
 
   const fetchQuestion = async () => {
     try {
@@ -42,6 +43,29 @@ const QuestionDetailsPage = () => {
     }
   } */
 
+  const deleteQuestion = async () => {
+    const currentToken = localStorage.getItem("authToken");
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/questions/${questionId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${currentToken}`,
+          },
+        }
+      );
+      if (response.ok) {
+        const parsed = await response.json();
+        console.log(parsed);
+        navigate("/feed");
+      }
+    } catch (error) {
+      console.log("Question wasn't deleted:", error);
+    }
+  };
+
   useEffect(() => {
     fetchQuestion();
     //fetchAnswers();
@@ -53,26 +77,26 @@ const QuestionDetailsPage = () => {
       <h1>Question Details Page</h1>
       <div>
         <h2>{question.title}</h2>
+        <button onClick={deleteQuestion}>Delete</button>
         <p>{question.text}</p>
         <p>{question.owner.username}</p>
         <p>{question.languages}</p>
         <p>{question.timestamps}</p>
-        
-        <img src={question.image} />
-        </div>
-        <AllAnswers answer={answer} setAnswer={setAnswer}/>
 
-        {question.answers.map((oneAnswer) => {
-          return (
-            <div key={oneAnswer._id}>
+        <img src={question.image} />
+      </div>
+      <AllAnswers answer={answer} setAnswer={setAnswer} />
+
+      {question.answers.map((oneAnswer) => {
+        return (
+          <div key={oneAnswer._id}>
             <p>{oneAnswer.text}</p>
             <img src={oneAnswer.image} />
           </div>
-          )
-          
-        })}
+        );
+      })}
 
-       {/*   {console.log(userAnswers)}
+      {/*   {console.log(userAnswers)}
          {console.log(answer)}
 
           {userAnswers && userAnswers.map((oneAnswer)=>{
@@ -83,8 +107,6 @@ const QuestionDetailsPage = () => {
             </div>
             
           })} */}
-
-      
     </>
   ) : (
     <h1>Loading</h1>
