@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import {  Link } from "react-router-dom";
+import {  Link, useParams } from "react-router-dom";
 import "../pages/Feed.css"
 
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("All");
+  const [answerNumber, setAnswerNumber] = useState(0);
+  const { answerId } = useParams();
 
   const getAllQuestions = async () => {
     try {
@@ -22,6 +24,8 @@ const Feed = () => {
       console.log(error);
     }
   };
+
+  
 
   const handleFilter = (event) => {
     setSelectedLanguage(event.target.value);
@@ -72,9 +76,10 @@ const Feed = () => {
               return (
                 <li key={question._id}>
                   <div>
+                        <h4>{question.owner.username}</h4>
+                        <img src={question.owner.photo} />
                     <div>
                       <Link to={`/feed/${question._id}`}>
-                        {/* <img src={question.owner.photo} /> */}
                         <h3>{question.title}</h3>
                         <p>{question.text}</p>
                         <img src={question.image} />
@@ -82,7 +87,7 @@ const Feed = () => {
                     </div>
                     <div>
                       <Link to={`/feed/${question._id}`}>
-                        <button>Comment</button>
+                        <button>Answers({question.answers.length})</button>
                       </Link>
                       <button>Share</button>
                     </div>
