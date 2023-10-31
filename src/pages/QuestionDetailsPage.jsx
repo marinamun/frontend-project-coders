@@ -43,7 +43,7 @@ const QuestionDetailsPage = () => {
     }
   } */
 
-  const deleteQuestion = async () => {
+  const deleteQuestion = async (questionId) => {
     const currentToken = localStorage.getItem("authToken");
     console.log('heee')
     try {
@@ -95,7 +95,7 @@ const QuestionDetailsPage = () => {
       <h1>Question Details Page</h1>
       <div>
         <h2>{question.title}</h2>
-        <button onClick={deleteQuestion}>Delete</button>
+        <button onClick={() => deleteQuestion(question._id)}>Delete</button>
         <p>{question.text}</p>
         <p>{question.owner.username}</p>
         <p>{question.languages}</p>
