@@ -43,9 +43,9 @@ const QuestionDetailsPage = () => {
     }
   } */
 
-  const deleteQuestion = async (questionId) => {
+  const deleteQuestion = async () => {
     const currentToken = localStorage.getItem("authToken");
-    console.log('heee')
+    console.log("heee");
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/${questionId}`,
@@ -55,8 +55,8 @@ const QuestionDetailsPage = () => {
             Authorization: `Bearer ${currentToken}`,
           }, */
         }
-      ); 
-      console.log('the question was deleted')
+      );
+      console.log("the question was deleted");
       navigate("/feed");
     } catch (error) {
       console.log("Question wasn't deleted:", error);
@@ -65,19 +65,19 @@ const QuestionDetailsPage = () => {
 
   const deleteAnswer = async (answerId) => {
     //const currentToken = localStorage.getItem("authToken");
-    console.log('heee')
+    console.log("heee");
     try {
       await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/answers/${answerId}`,
         {
-          method: "DELETE"
+          method: "DELETE",
           /* headers: {
             Authorization: `Bearer ${currentToken}`,
           }, */
         },
-        console.log('inside fetch')
-      ); 
-      console.log('the answer was deleted')
+        console.log("inside fetch")
+      );
+      console.log("the answer was deleted");
       window.location.reload();
     } catch (error) {
       console.log("Answer wasn't deleted:", error);
@@ -95,7 +95,7 @@ const QuestionDetailsPage = () => {
       <h1>Question Details Page</h1>
       <div>
         <h2>{question.title}</h2>
-        <button onClick={() => deleteQuestion(question._id)}>Delete</button>
+        <button onClick={deleteQuestion}>Delete</button>
         <p>{question.text}</p>
         <p>{question.owner.username}</p>
         <p>{question.languages}</p>
