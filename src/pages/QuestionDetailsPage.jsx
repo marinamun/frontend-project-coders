@@ -10,6 +10,8 @@ const QuestionDetailsPage = () => {
   const [question, setQuestion] = useState();
   //const [userAnswers, setUserAnswers] = useState([]);
   const [answer, setAnswer] = useState("");
+  const [answerNumber, setAnswerNumber] = useState(0);
+  /* setAnswerNumber(question.answers.length - 1);  */
 
   const fetchQuestion = async () => {
     try {
@@ -20,6 +22,7 @@ const QuestionDetailsPage = () => {
         const parsedFromBackend = await responseFromBackend.json();
         console.log(parsedFromBackend);
         setQuestion(parsedFromBackend.question);
+        setAnswerNumber(parsedFromBackend.question.answers.length);
       }
     } catch (error) {
       console.log(error);
@@ -94,6 +97,7 @@ const QuestionDetailsPage = () => {
       <Navbar />
       <h1>Question Details Page</h1>
       <div>
+        <h5>Number of answers:{answerNumber}</h5>
         <h2>{question.title}</h2>
         <button onClick={deleteQuestion}>Delete</button>
         <p>{question.text}</p>
@@ -109,12 +113,12 @@ const QuestionDetailsPage = () => {
         return (
           <div key={oneAnswer._id}>
             <p>{oneAnswer.text}</p>
+
             <img src={oneAnswer.image} />
             <button onClick={() => deleteAnswer(oneAnswer._id)}>Delete</button>
           </div>
         );
       })}
-
       {/*   {console.log(userAnswers)}
          {console.log(answer)}
 

@@ -5,7 +5,7 @@ import "../pages/Feed.css"
 
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState('All');
+  const [selectedLanguage, setSelectedLanguage] = useState("All");
 
   const getAllQuestions = async () => {
     try {
@@ -14,7 +14,7 @@ const Feed = () => {
       );
       if (responseFromBackend.status === 201) {
         const parsed = await responseFromBackend.json();
-        console.log(parsed)
+        console.log(parsed);
         setQuestions(parsed.allQuestions);
         //allQuestions comes from the backend
       }
@@ -24,17 +24,15 @@ const Feed = () => {
   };
 
   const handleFilter = (event) => {
-    setSelectedLanguage(event.target.value)
-  }
-    const filteredLanguage = questions.filter((questionLanguage)=>{
-      if (selectedLanguage === 'All') {
-        return true;
-      }
-      return (
-         questionLanguage.languages.includes(selectedLanguage)
-      )
-    })
-  
+    setSelectedLanguage(event.target.value);
+  };
+  const filteredLanguage = questions.filter((questionLanguage) => {
+    if (selectedLanguage === "All") {
+      return true;
+    }
+    return questionLanguage.languages.includes(selectedLanguage);
+  });
+
   useEffect(() => {
     getAllQuestions();
   }, []);
@@ -48,8 +46,11 @@ const Feed = () => {
       <div>
         <label>
           Filter by Language
-          <select name="languages" value={selectedLanguage}
-            onChange={handleFilter}>
+          <select
+            name="languages"
+            value={selectedLanguage}
+            onChange={handleFilter}
+          >
             <option value="All">All Languages</option>
             <option value="JavaScript">JavaScript</option>
             <option value="Python">Python</option>
@@ -58,7 +59,6 @@ const Feed = () => {
             <option value="C#">C#</option>
           </select>
         </label>
-
       </div>
       <div>
         <Link to={"/questions/new"}>
@@ -66,31 +66,31 @@ const Feed = () => {
         </Link>
       </div>
       <div>
-      <ul className="post">
-        {filteredLanguage &&
-          filteredLanguage.map((question) => {
-            return (
-            <li key={question._id}>
-              <div>
-                <div>
-                  <Link to={`/feed/${question._id}`}>
-                    {/* <img src={question.owner.photo} /> */}
-                    <h3>{question.title}</h3>
-                    <p>{question.text}</p>
-                    <img src={question.image}/>
-                   </Link> 
-                </div>
-                <div>
-                  <Link to={`/feed/${question._id}`}>
-                    <button>Comments</button>
-                  </Link>
-                  <button>Share</button>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+        <ul className="post">
+          {filteredLanguage &&
+            filteredLanguage.map((question) => {
+              return (
+                <li key={question._id}>
+                  <div>
+                    <div>
+                      <Link to={`/feed/${question._id}`}>
+                        {/* <img src={question.owner.photo} /> */}
+                        <h3>{question.title}</h3>
+                        <p>{question.text}</p>
+                        <img src={question.image} />
+                      </Link>
+                    </div>
+                    <div>
+                      <Link to={`/feed/${question._id}`}>
+                        <button>Comment</button>
+                      </Link>
+                      <button>Share</button>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+        </ul>
       </div>
       </div>
     </>
