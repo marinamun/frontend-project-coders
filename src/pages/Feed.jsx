@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import {  Link } from "react-router-dom";
+import "../pages/Feed.css"
 
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
@@ -41,6 +42,7 @@ const Feed = () => {
   return (
     <>
       <Navbar />
+      <div className="container">
       <h1>FEEEEED👋🏼</h1>
 
       <div>
@@ -89,6 +91,7 @@ const Feed = () => {
           );
         })}
       </ul>
+      </div>
       </div>
     </>
   );
