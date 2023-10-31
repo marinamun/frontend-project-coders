@@ -6,7 +6,7 @@ const AllAnswers = ({answer, setAnswer}) => {
   const navigate = useNavigate()
     const {questionId} = useParams();
     const onSubmit = async event => {
-        event.preventDefault();
+        //event.preventDefault();
 
         const image = event.target.image.files[0];
         const formData = new FormData();
@@ -57,7 +57,7 @@ const AllAnswers = ({answer, setAnswer}) => {
     <div>
         <h2>Answer</h2>
         <form onSubmit={onSubmit}>
-      <input type="textarea" value={answer} onChange={(event) => setAnswer(event.target.value)} />
+      <input type="text" value={answer} onChange={(event) => setAnswer(event.target.value)} />
       <input type="file" name="image" />
       <button type='submit'>Send</button>
         </form>
