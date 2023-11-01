@@ -31,6 +31,7 @@ p {
 }
 .details {
   margin-top: 45px;
+
   margin-bottom: 45px;
   text-align: center;
   border: 2px solid white;
@@ -101,14 +102,16 @@ p {
 .update-container form div {
   color: white;
 
-  margin-left: 70px;
-  margin-right: 70px;
+  /* margin-left: 70px;
+  margin-right: 70px; */
   background-color: #c3bef0;
   font-family: "Nunito", sans-serif;
   margin-bottom: 15px;
   border: 1.5px solid white;
   padding: 10px;
   border-radius: 15px;
+  margin: 0 auto; /*to center the box boxes, looks good in phone screen*/
+  
 }
 
 .update-container form label {
@@ -153,10 +156,16 @@ p {
 /*RESPONSIVE for UpdateUserPage*/
 @media (max-width: 800px) {
   .update-container input {
-    width: 70%;
+    width: 90%;
   }
   #languages-input {
     width: 70%;
+  }
+  .update-container div {
+    width: 80%;
+  }
+  .update-container {
+    margin: 0 auto;
   }
 }
 /*RESPONSIVE for ProfilePage*/
@@ -170,7 +179,7 @@ p {
     justify-content: center;
   }
   .questions {
-    width: 30%;
+    width: 60%;
     margin: 0 auto;
     margin-top: 20px;
   }
@@ -180,18 +189,19 @@ p {
     display: block;
     text-align: center;
     font-size: 13px;
-    
   }
   #emoji {
     display: none;
   }
+  .info {
+    margin: 0 auto;
+    width: 60%;
+  }
 }
 
-@media (max-width: 700px){
-.each-question span {
-    
+@media (max-width: 700px) {
+  .each-question span {
     font-size: 8px;
-    
-    
   }
+  
 }
