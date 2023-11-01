@@ -9,14 +9,10 @@ import "../pages/QuestionDetailsPage.css"
 const QuestionDetailsPage = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { questionId, answerId } = useParams();
-
-  //const { answerId } = useParams();
+  const { questionId } = useParams();
   const [question, setQuestion] = useState();
-  //const [userAnswers, setUserAnswers] = useState([]);
   const [answer, setAnswer] = useState("");
   const [answerNumber, setAnswerNumber] = useState(0);
-  /* setAnswerNumber(question.answers.length - 1);  */
 
   const fetchQuestion = async () => {
     try {
@@ -34,34 +30,13 @@ const QuestionDetailsPage = () => {
     }
   };
 
-  /* const fetchAnswers = async () => {
-
-    try {
-      const responseFromBackend = await fetch(`${import.meta.env.VITE_API_URL}/api/questions/answers/${answerId}`)
-      if(responseFromBackend.ok) {
-        const parsedFromBackend = await responseFromBackend.json()
-        console.log(parsedFromBackend)
-        setUserAnswers(parsedFromBackend.userAnswers)
-      console.log(parsedFromBackend.userAnswers)
-    } else {
-      console.error("Failed to fetch answer data")
-    }
-    } catch (error) {
-      console.error(error);
-    }
-  } */
-
   const deleteQuestion = async () => {
     const currentToken = localStorage.getItem("authToken");
-    console.log("heee");
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/${questionId}`,
         {
           method: "DELETE",
-          /* headers: {
-            Authorization: `Bearer ${currentToken}`,
-          }, */
         }
       );
       console.log("the question was deleted");
@@ -72,18 +47,12 @@ const QuestionDetailsPage = () => {
   };
 
   const deleteAnswer = async (answerId) => {
-    //const currentToken = localStorage.getItem("authToken");
-    console.log("heee");
     try {
       await fetch(
         `${import.meta.env.VITE_API_URL}/api/questions/answers/${answerId}`,
         {
           method: "DELETE",
-          /* headers: {
-            Authorization: `Bearer ${currentToken}`,
-          }, */
         },
-        console.log("inside fetch")
       );
       console.log("the answer was deleted");
       window.location.reload();
@@ -94,7 +63,6 @@ const QuestionDetailsPage = () => {
 
   useEffect(() => {
     fetchQuestion();
-    //fetchAnswers();
   }, [questionId]);
 
   return question ? (
