@@ -103,7 +103,9 @@ const QuestionDetailsPage = () => {
       <div>
         <h5>Number of answers:{answerNumber}</h5>
         <h2>{question.title}</h2>
-        <button onClick={deleteQuestion}>Delete</button>
+        {user.userId === question.owner._id ? (
+          <button onClick={deleteQuestion}>Delete</button>
+        ) : null}
         <p>{question.text}</p>
         <p>{question.owner.username}</p>
         <p>{question.languages}</p>
@@ -118,8 +120,8 @@ const QuestionDetailsPage = () => {
           <div key={oneAnswer._id}>
             <p>{oneAnswer.text}</p>
             <img src={oneAnswer.image} />
-            {console.log(user)}
-            {user.userId === question.owner._id ? (
+            {console.log(question)}
+            {user.userId === oneAnswer.owner ? (
               <button
                 className="deleteBtn"
                 onClick={() => deleteAnswer(oneAnswer._id)}
