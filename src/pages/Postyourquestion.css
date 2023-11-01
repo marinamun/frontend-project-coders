@@ -1,0 +1,76 @@
+h1 {
+  text-align: center;
+}
+.question-container {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+.question-container form {
+  width: 60%;
+
+  background-color: #DEFCF9;
+  border-radius: 20px;
+  padding: 50px 30px;
+  border: 1.5px solid white;
+  filter: drop-shadow(0 0 0.25rem white);
+}
+.question-container label,
+input,
+button {
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  color: #cca8e9;
+}
+.question-container label {
+  margin-right: 10px;
+}
+.question-container div {
+  border: 1.5px solid #cca8e9;
+  margin-left: 70px;
+  margin-right: 70px;
+  background-color: #defcf9;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+.submit-btn {
+  margin: 0 auto;
+  display: block;
+  padding: 15px;
+  background-color: #cca8e9;
+  border: 1.5px solid #cca8e9;
+  filter: drop-shadow(0 0 0.25rem #282a36);
+  border-radius: 15px;
+  font-family: "Nunito", sans-serif;
+  color: white;
+  font-weight: bold;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  color: white;
+  background-color: #c3bef0;
+  filter: drop-shadow(0 0 0.45rem white);
+  transform: scale(1.05);
+}
+#selector {
+  font-family: "Nunito", sans-serif;
+  padding: 5px;
+}
+.gif {
+  margin-top: 30px;
+  border-radius: 20px;
+}
+.text-input {
+  width: 300px; /* Set the desired width */
+  height: 25px; /* Set the desired height */
+  font-size: 14px; /* Set the desired font size */
+  color: #282A36;
+  border: none;
+  border-radius: 10px;
+  background-color: #CCA8E9;
+  /* Add any other styles you want for the input box */
+}

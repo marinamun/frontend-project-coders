@@ -62,7 +62,7 @@ const Profile = () => {
   return oneUser ? (
     <>
       <Navbar />
-      <div className="container">
+      <div className="profile-container">
         <div className="info">
           <h1>Hi {oneUser.username}👋🏼</h1>
           <img
@@ -70,11 +70,13 @@ const Profile = () => {
             alt="profile photo"
             style={{ width: "200px" }}
           />
-          <h3>{oneUser.username}</h3>
-          <p>{oneUser.email}</p>
-          <p>🌍{oneUser.country}</p>
-          <p>💻{oneUser.languages}</p>
-          <p>{oneUser.level}</p>
+          <div className="details">
+            <h3>{oneUser.username}</h3>
+            <p>{oneUser.email}</p>
+            <p>🌍{oneUser.country}</p>
+            <p>💻{oneUser.languages}</p>
+            <p>{oneUser.level}</p>
+          </div>
 
           <Link to={`/users/update`}>
             <button type="button" className="update-btn">

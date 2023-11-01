@@ -1,16 +1,16 @@
-.container {
+.profile-container {
   margin-top: 40px;
   display: flex;
   justify-content: center;
 }
-h1,
+.profile-container h1,
 h2,
 h3,
 p {
   color: #282a36;
 }
 
-h1 {
+.profile-container h1 {
   text-align: center;
   margin-bottom: 40px;
 }
@@ -22,13 +22,21 @@ h1 {
   padding: 35px;
   background-color: #defcf9;
   filter: drop-shadow(0 0 0.25rem white);
-  height: 490px;
+  
 }
 .info img {
   margin: 0 auto;
   display: block;
   border-radius: 25px;
   filter: drop-shadow(0 0 0.25rem #282a36);
+}
+.details{
+  margin-top: 45px;
+  margin-bottom: 45px;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 25px;
+  
 }
 
 .update-btn {
@@ -77,33 +85,34 @@ h1 {
 
 .update-container {
   text-align: center;
-  margin-top: 20px;
-
+  margin-top: 40px;
+  margin-bottom: 100px;
   display: flex;
   justify-content: center;
 }
-form {
+.update-container form {
   width: 60%;
-  height: 450px;
+  
   background-color: #cadefc;
   border-radius: 20px;
   padding: 50px 30px;
   border: 1.5px solid white;
   filter: drop-shadow(0 0 0.25rem white);
 }
-form div {
+.update-container form div {
   color: white;
+
   margin-left: 70px;
   margin-right: 70px;
-  background-color: #cca8e9;
+  background-color: #c3bef0;
   font-family: "Nunito", sans-serif;
   margin-bottom: 15px;
-  border: 1px solid #cca8e9;
+  border: 1.5px solid white;
   padding: 10px;
   border-radius: 15px;
 }
 
-form label {
+.update-container form label {
   margin-right: 10px;
 }
 .updatepage-btn {
@@ -111,14 +120,28 @@ form label {
   display: block;
   padding: 15px;
   background-color: white;
-  border: 1.5px solid #cadefc;
+  border: 2px solid #cca8e9;
   border-radius: 15px;
   font-family: "Nunito", sans-serif;
-  color: #282a36;
+  color: #cca8e9;
   font-weight: bold;
   transition: 0.1s ease;
+  cursor: pointer;
 }
 .updatepage-btn:hover {
-  border: 2px solid #282a36;
+  background-color: #cca8e9;
+  color: white;
+  border: 2px solid white;
   filter: drop-shadow(0 0 0.45rem white);
+  transform: scale(1.05);
+}
+.form-input {
+  font-family: "Nunito", sans-serif;
+  width: 300px;
+  height: 25px;
+  font-size: 14px;
+  color: #282a36;
+}
+#languages-input{
+  height: 70px;vertical-align: middle;
 }

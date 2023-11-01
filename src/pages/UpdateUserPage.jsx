@@ -118,7 +118,9 @@ const UpdateUserPage = () => {
   return (
     <>
       <Navbar />
-      <h1 style={{ color: "white" }}>Update your details:</h1>
+      <h1 style={{ color: "white", textAlign: "center" }}>
+        ⚙️Update your details:
+      </h1>
       <div className="update-container">
         <form onSubmit={onSubmit}>
           <div>
@@ -126,6 +128,7 @@ const UpdateUserPage = () => {
             <input
               type="text"
               value={userName}
+              className="form-input"
               onChange={(event) => setUserName(event.currentTarget.value)}
             />
           </div>
@@ -134,6 +137,7 @@ const UpdateUserPage = () => {
             <input
               type="text"
               value={email}
+              className="form-input"
               onChange={(event) => setEmail(event.currentTarget.value)}
             />
           </div>
@@ -143,6 +147,8 @@ const UpdateUserPage = () => {
             <select
               value={languages}
               multiple={true}
+              className="form-input"
+              id="languages-input"
               onChange={(e) => {
                 const options = [...e.currentTarget.selectedOptions];
                 const values = options.map((option) => option.value);
@@ -162,33 +168,37 @@ const UpdateUserPage = () => {
 
             <select
               value={level}
+              className="form-input"
               onChange={(event) => setLevel(event.currentTarget.value)}
             >
-              <option value="Learner">"Learner"</option>
+              <option value="Learner">"Beginner"</option>
               <option value="Junior">"Junior"</option>
               <option value="Senior">"Senior"</option>
             </select>
           </div>
           <div>
-            <label>
-              Country
-              <input
-                value={country}
-                onChange={(event) => setCountry(event.currentTarget.value)}
-              />
-            </label>
+            <label>Country </label>
+            <input
+              value={country}
+              className="form-input"
+              onChange={(event) => setCountry(event.currentTarget.value)}
+            />
           </div>
           <div>
             <label>Photo URL:</label>
             <input
               type="file"
-              //value={photo}
+              className="form-input"
+              id="file-box"
               name="image"
-              //onChange={(event) => setPhoto(event.currentTarget.value)}
             />
           </div>
 
-          <button type="submit" className="updatepage-btn">
+          <button
+            type="submit"
+            className="updatepage-btn"
+            style={{ marginTop: "30px" }}
+          >
             Update
           </button>
         </form>
