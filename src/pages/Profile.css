@@ -1,0 +1,147 @@
+.profile-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.profile-container h1,
+h2,
+h3,
+p {
+  color: #282a36;
+}
+
+.profile-container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+/*Personal information, left side*/
+.info {
+  width: 30%;
+  border: 3px solid #cadefc;
+  border-radius: 20px;
+  padding: 35px;
+  background-color: #defcf9;
+  filter: drop-shadow(0 0 0.25rem white);
+  
+}
+.info img {
+  margin: 0 auto;
+  display: block;
+  border-radius: 25px;
+  filter: drop-shadow(0 0 0.25rem #282a36);
+}
+.details{
+  margin-top: 45px;
+  margin-bottom: 45px;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 25px;
+  
+}
+
+.update-btn {
+  margin: 0 auto;
+  display: block;
+  padding: 15px;
+  background-color: white;
+  border: 1.5px solid #cadefc;
+  border-radius: 15px;
+  font-family: "Nunito", sans-serif;
+  color: #282a36;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.update-btn:hover {
+  background-color: #cadefc;
+  color: white;
+}
+/*User's question, right side*/
+
+.questions {
+  width: 30%;
+  margin-left: 30px;
+  background-color: #c3bef0;
+  border: 3px solid #cca8e9;
+  border-radius: 20px;
+  padding: 35px;
+  filter: drop-shadow(0 0 0.25rem white);
+}
+.each-question {
+  border: 1.5px solid white;
+  border-radius: 15px;
+  padding: 15px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+.each-question span {
+  margin-left: 40px;
+}
+.each-question:hover {
+  background-color: #cca8e9;
+}
+
+/*UPDATE USER PAGE*/
+
+.update-container {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+.update-container form {
+  width: 60%;
+  
+  background-color: #cadefc;
+  border-radius: 20px;
+  padding: 50px 30px;
+  border: 1.5px solid white;
+  filter: drop-shadow(0 0 0.25rem white);
+}
+.update-container form div {
+  color: white;
+
+  margin-left: 70px;
+  margin-right: 70px;
+  background-color: #c3bef0;
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 15px;
+  border: 1.5px solid white;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.update-container form label {
+  margin-right: 10px;
+}
+.updatepage-btn {
+  margin: 0 auto;
+  display: block;
+  padding: 15px;
+  background-color: white;
+  border: 2px solid #cca8e9;
+  border-radius: 15px;
+  font-family: "Nunito", sans-serif;
+  color: #cca8e9;
+  font-weight: bold;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+.updatepage-btn:hover {
+  background-color: #cca8e9;
+  color: white;
+  border: 2px solid white;
+  filter: drop-shadow(0 0 0.45rem white);
+  transform: scale(1.05);
+}
+.form-input {
+  font-family: "Nunito", sans-serif;
+  width: 300px;
+  height: 25px;
+  font-size: 14px;
+  color: #282a36;
+}
+#languages-input{
+  height: 70px;vertical-align: middle;
+}

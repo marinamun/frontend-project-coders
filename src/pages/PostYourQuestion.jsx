@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import "../pages/Postyourquestion.css";
 
 const PostYourQuestion = () => {
   const { fetchWithToken } = useContext(AuthContext);
@@ -52,40 +53,60 @@ const PostYourQuestion = () => {
   return (
     <>
       <Navbar />
-      <h1>Ask your question!</h1>
-      <form onSubmit={onSubmit}>
-        <label>
-          Title
-          <input
-            value={title}
-            type="text"
-            onChange={(event) => setTitle(event.target.value)}
-          />
-        </label>
-        <label>
-          Text
-          <input
-            value={text}
-            type="text"
-            onChange={(event) => setText(event.target.value)}
-          />
-        </label>
-        <label> Language:</label>
-        <select
-          name="languages"
-          value={language}
-          onChange={(event) => setLanguage(event.target.value)}
-        >
-          <option value="JavaScript">JavaScript</option>
-          <option value="Python">Python</option>
-          <option value="Java">Java</option>
-          <option value="C++">C++</option>
-          <option value="C#">C#</option>
-        </select>
+      <h1>👩🏼‍💻Ask your question!</h1>
+      <div className="question-container">
+        <form onSubmit={onSubmit}>
+          <div>
+            <label>Title</label>
+            <input
+              value={title}
+              type="text"
+              className="text-input"
+              onChange={(event) => setTitle(event.target.value)}
+            />
+          </div>
+          <div>
+            <label>Text</label>
+            <input
+              value={text}
+              type="text"
+              className="text-input"
+              onChange={(event) => setText(event.target.value)}
+            />
+          </div>
+          <div>
+            <label> Language:</label>
+            <select
+              name="languages"
+              value={language}
+              id="selector"
+              onChange={(event) => setLanguage(event.target.value)}
+            >
+              <option value="JavaScript">JavaScript</option>
+              <option value="Python">Python</option>
+              <option value="Java">Java</option>
+              <option value="C++">C++</option>
+              <option value="C#">C#</option>
+            </select>
+          </div>
+          <div>
+            <input type="file" name="image" id="selector" />
+          </div>
 
-        <input type="file" name="image" />
-        <button type="submit">Submit</button>
-      </form>
+          <button
+            type="submit"
+            className="submit-btn"
+            style={{ marginTop: "30px" }}
+          >
+            Submit
+          </button>
+          <img
+            src="https://i.giphy.com/media/WDbNojCLBFs3r0c10h/giphy.webp"
+            style={{ width: "100px" }}
+            className="gif"
+          />
+        </form>
+      </div>
     </>
   );
 };
