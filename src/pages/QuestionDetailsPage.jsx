@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import AllAnswers from "../components/AllAnswers";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import "../pages/QuestionDetailsPage.css"
 
 const QuestionDetailsPage = () => {
   const { user } = useContext(AuthContext);
@@ -99,31 +100,31 @@ const QuestionDetailsPage = () => {
   return question ? (
     <>
       <Navbar />
-      <h1>Question Details Page</h1>
-      <div>
-        <h5>Number of answers:{answerNumber}</h5>
-        <h2>{question.title}</h2>
+      <h1 className="qustion-title"></h1>
+      <div className="qustion-parent">
+        <h5 className="question-counter">Number of answers:{answerNumber}</h5>
+        <h2 className="question-title">{question.title}</h2>
         {user.userId === question.owner._id ? (
-          <button onClick={deleteQuestion}>Delete</button>
+          <button onClick={deleteQuestion} className="question-button">Delete</button>
         ) : null}
-        <p>{question.text}</p>
-        <p>{question.owner.username}</p>
-        <p>{question.languages}</p>
+        <p className="question-text">{question.text}</p>
+        <p className="question-username">{question.owner.username}</p>
+        <p className="question-language">{question.languages}</p>
         <p>{question.timestamps}</p>
 
-        <img src={question.image} />
+        <img src={question.image} className="question-img" />
       </div>
       <AllAnswers answer={answer} setAnswer={setAnswer} />
 
       {question.answers.map((oneAnswer) => {
         return (
-          <div key={oneAnswer._id}>
-            <p>{oneAnswer.text}</p>
-            <img src={oneAnswer.image} />
+          <div className="question-answer"  key={oneAnswer._id}>
+            <p className="answer-text">{oneAnswer.text}</p>
+            <img id="question-img" src={oneAnswer.image} />
             {console.log(question)}
             {user.userId === oneAnswer.owner ? (
               <button
-                className="deleteBtn"
+                className="question-deleteBtn"
                 onClick={() => deleteAnswer(oneAnswer._id)}
               >
                 Delete
