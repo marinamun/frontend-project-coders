@@ -28,7 +28,11 @@ padding: 1.5rem;
 width: 60vw;
 margin-bottom: 1rem;
 border-radius: 1rem;
+}
 
+.bodyPostCtn h3 p {
+    font-family: 'Playpen Sans', cursive;
+    color: #defcf9;
 }
 
 .headerPostCtn{
