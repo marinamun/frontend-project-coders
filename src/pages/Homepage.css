@@ -1,9 +1,9 @@
-* {
+/* * {
     margin: auto;
-}
+} */
 
 nav {
-    margin: 0;
+    margin: 0 auto;
     padding: 1vh;
     background: linear-gradient(329deg, #defcf9, #cadefc, #c3bef0, #cca8e9);
     display: flex;
@@ -33,7 +33,10 @@ nav {
 .logo {
 width: 150px;
 display: flex;
+}
 
+.homepageDiv img {
+    width: 300px;
 }
 
 .navbarWords {
@@ -53,10 +56,10 @@ display: flex;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(329deg, #defcf9, #cadefc, #c3bef0, #cca8e9);
-    padding: 10vh;
-    padding: 10vw;
+    padding: 6vh;
+    padding: 6vw;
     margin: 10px;
-    margin-top: 30px;
+    margin: auto;
     border: 6px solid white;
     border-radius: 30px;
     font-size: 2rem;
@@ -85,6 +88,7 @@ display: flex;
 }
 
 .loginDiv {
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -132,6 +136,7 @@ display: flex;
 
 
 .signupDiv {
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
