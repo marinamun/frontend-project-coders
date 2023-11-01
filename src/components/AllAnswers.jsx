@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "../components/Answer.css"
 
 const AllAnswers = ({ answer, setAnswer }) => {
   const navigate = useNavigate();
@@ -60,16 +61,20 @@ const AllAnswers = ({ answer, setAnswer }) => {
   };
 
   return (
-    <div>
-      <h2>Answer</h2>
+    <div className="answer-div">
+      {/* <h2>Answer</h2> */}
       <form onSubmit={onSubmit}>
         <input
           type="text"
+          placeholder="Leave it here your Answer"
           value={answer}
           onChange={(event) => setAnswer(event.target.value)}
+          className="answer-input"
         />
-        <input type="file" name="image" />
-        <button type="submit">Send</button>
+        <input type="file" name="image" id="answer-input-file" />
+        <button type="submit" className="answer-button">
+          Send
+        </button>
       </form>
     </div>
   );
