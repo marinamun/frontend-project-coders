@@ -1,5 +1,6 @@
 h1 {
   text-align: center;
+  margin-top: 35px;
 }
 .question-container {
   text-align: center;
@@ -11,7 +12,7 @@ h1 {
 .question-container form {
   width: 60%;
 
-  background-color: #DEFCF9;
+  background-color: #defcf9;
   border-radius: 20px;
   padding: 50px 30px;
   border: 1.5px solid white;
@@ -65,12 +66,25 @@ button {
   border-radius: 20px;
 }
 .text-input {
-  width: 300px; /* Set the desired width */
-  height: 25px; /* Set the desired height */
-  font-size: 14px; /* Set the desired font size */
-  color: #282A36;
+  width: 300px; 
+  height: 25px; 
+  font-size: 14px; 
+  color: #282a36;
   border: none;
   border-radius: 10px;
-  background-color: #CCA8E9;
+  background-color: #cca8e9;
   /* Add any other styles you want for the input box */
+}
+.question-container input {
+  border: none;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 800px) {
+  .question-container input {
+    width: 70%;
+  }
+  #selector{
+    width: 70%;
+  }
 }

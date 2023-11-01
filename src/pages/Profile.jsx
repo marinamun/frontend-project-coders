@@ -91,7 +91,7 @@ const Profile = () => {
               <div key={question._id}>
                 <Link to={`/feed/${question._id}`}>
                   <p className="each-question">
-                    💬<span>{question.title}</span>{" "}
+                    <span id="emoji">💬</span><span id="title">{question.title}</span>{" "}
                   </p>
                 </Link>
                 {/* Display other question details as needed */}

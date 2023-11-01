@@ -169,6 +169,7 @@ const UpdateUserPage = () => {
             <select
               value={level}
               className="form-input"
+              id="languages-input"
               onChange={(event) => setLevel(event.currentTarget.value)}
             >
               <option value="Learner">"Beginner"</option>
