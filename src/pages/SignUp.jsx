@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../pages/Homepage.css"
 
 
 const SignUp = () => {
@@ -35,8 +36,9 @@ const SignUp = () => {
 
   return (
     <>
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="signupDiv">
+      {/* <h1>Signup</h1> */}
+      <form className="signupForm" onSubmit={handleSubmit}>
         <label>
           Username
           <input
@@ -46,7 +48,7 @@ const SignUp = () => {
           />
         </label>
         <label>
-          Email
+          Email:
           <input
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -54,7 +56,7 @@ const SignUp = () => {
           />
         </label>
         <label>
-          Password
+          Password:
           <input
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -62,8 +64,9 @@ const SignUp = () => {
             type="password"
           />
         </label>
-        <button type="submit">Register</button>
+        <button className="signupBtn" type="submit">Register</button>
       </form>
+      </div>
     </>
   );
 };

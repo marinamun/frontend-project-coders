@@ -1,0 +1,178 @@
+* {
+    margin: auto;
+}
+
+nav {
+    margin: 0;
+    padding: 1vh;
+    background: linear-gradient(329deg, #defcf9, #cadefc, #c3bef0, #cca8e9);
+    display: flex;
+    border: 5px solid white;
+    border-radius: 20px;
+}
+
+.navbarOne {
+    font-size: 1.5rem;
+    font-family: 'Nunito', sans-serif; 
+    background-color: #971CE9;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbarTwo {
+    font-size: 1.5rem;
+    font-family: 'Nunito', sans-serif; 
+    background-color: #971CE9;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+}
+
+.logo {
+width: 150px;
+display: flex;
+
+}
+
+.navbarWords {
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: black; */
+}
+
+/* .navbarWordsOther {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+} */
+
+.homepageDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(329deg, #defcf9, #cadefc, #c3bef0, #cca8e9);
+    padding: 10vh;
+    padding: 10vw;
+    margin: 10px;
+    margin-top: 30px;
+    border: 6px solid white;
+    border-radius: 30px;
+    font-size: 2rem;
+}
+
+.homepageDiv ul {
+    display: flex;
+    flex-direction: column;
+    padding: 10vh;
+}
+
+.homepageDiv li {
+    padding: 30px;
+    transition: 0.3s ease;
+    
+}
+
+.homepageDiv li:hover {
+    transform: scale(1.2);
+    
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+}
+
+.loginDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 90vh;
+    background: linear-gradient(329deg, #c3bef0, #cca8e9);
+    border: 4px solid white;
+    border-radius: 30px;
+    font-size: 1.2rem;
+}
+
+.loginDiv h1 {
+    color: #410A66;
+    font-family: 'Nunito', sans-serif;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 30vh;
+    font-size: 2rem;
+    /* background-color: palevioletred; */
+}
+
+.loginBtn {
+    width: 260px;
+    height: 40px;
+    border: none;
+    box-shadow: #410A66;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #410A66;
+    transition: 0.3s ease;
+}
+
+.loginBtn:hover {
+    background-color: #cadefc;
+    transform: scale(1.1);
+    
+}
+
+
+.signupDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 90vh;
+    background: linear-gradient(329deg, #c3bef0, #cca8e9);
+    border: 4px solid white;
+    border-radius: 30px;
+    font-size: 1.2rem;
+}
+
+.signupDiv h1 {
+    color: #410A66;
+    font-family: 'Nunito', sans-serif;
+}
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 30vh;
+    font-size: 2rem;
+    /* background-color: palevioletred; */
+}
+
+.signupBtn {
+    width: 260px;
+    height: 40px;
+    border: none;
+    box-shadow: #410A66;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #410A66;
+    transition: 0.3s ease;
+}
+
+.signupBtn:hover {
+    background-color: #cadefc;
+    transform: scale(1.1);
+    
+}

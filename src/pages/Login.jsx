@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import "../pages/Homepage.css"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -41,8 +42,9 @@ const Login = () => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="loginDiv">
+      {/* <h1>Login</h1> */}
+      <form className="loginForm" onSubmit={handleSubmit}>
         <label>
           Username:
           <input
@@ -52,7 +54,7 @@ const Login = () => {
           />
         </label>
         <label>
-          Password
+          Password:
           <input
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -60,8 +62,9 @@ const Login = () => {
             type="password"
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="loginBtn" type="submit">Log In</button>
       </form>
+      </div>
     </>
   );
 };
