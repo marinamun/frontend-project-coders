@@ -3,12 +3,11 @@ import Navbar from "../components/Navbar";
 import {  Link, useParams } from "react-router-dom";
 import "../pages/Feed.css"
 
+
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("All");
-  const [answerNumber, setAnswerNumber] = useState(0);
-  const { answerId } = useParams();
 
   const getAllQuestions = async () => {
     try {
@@ -62,66 +61,74 @@ const Feed = () => {
     <>
       <Navbar />
       <div className="container">
-      <h1>FEEEEED👋🏼</h1>
 
-      {users.map((oneUser)=> {
-        return (
-          <div key={oneUser._id}>
-            <h1>{oneUser.username}</h1>
+        <div className="postsCtn">
+          <div className="headerAllPostsCtn">
+            <div className="filterBox">
+              <label>
+                <select className="btn"
+                  name="languages"
+                  value={selectedLanguage}
+                  onChange={handleFilter}
+                >
+                  <option value="All">All Languages</option>
+                  <option value="JavaScript">JavaScript</option>
+                  <option value="Python">Python</option>
+                  <option value="Java">Java</option>
+                  <option value="C++">C++</option>
+                  <option value="C#">C#</option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <Link to={"/questions/new"}>
+                <button className="btn">Add a question</button>
+              </Link>
+            </div>
           </div>
-        )
-      })}
 
-      <div>
-        <label>
-          Filter by Language
-          <select
-            name="languages"
-            value={selectedLanguage}
-            onChange={handleFilter}
-          >
-            <option value="All">All Languages</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="Python">Python</option>
-            <option value="Java">Java</option>
-            <option value="C++">C++</option>
-            <option value="C#">C#</option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <Link to={"/questions/new"}>
-          <button>+</button>
-        </Link>
-      </div>
-      <div>
-        <ul className="post">
-          {filteredLanguage &&
-            filteredLanguage.map((question) => {
-              return (
-                <li key={question._id}>
-                  <div>
-                    <div>
-                      <Link to={`/feed/${question._id}`}>
-                        <img src={question.owner.photo} />
-                        <h4>{question.owner.username}</h4>
-                        <h3>{question.title}</h3>
-                        <p>{question.text}</p>
-                        <img src={question.image} />
-                      </Link>
-                    </div>
-                    <div>
-                      <Link to={`/feed/${question._id}`}>
-                        <button>Answers({question.answers.length})</button>
-                      </Link>
-                      <button>Share</button>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+          <div>
+            <ul >
+              {filteredLanguage &&
+                filteredLanguage.map((question) => {
+                  return (
+                    <li key={question._id}>
+                      <div className="onePost">
+                        <div className="headerPostCtn">
+                          <img id="imgPostUser" src={question.owner.photo} alt="profile photo" />
+                          <h3>{question.title}</h3>
+                        </div>
+                        <div className="bodyPostCtn">
+                            <p>{question.text}</p>
+                            <img id="file" src={question.image} />
+                        </div>
+                        <div className="footerPostCtn">
+                          <Link to={`/feed/${question._id}`}>
+                            <button className="btn">Answers ({question.answers.length})</button>
+                          </Link>
+                          <button className="btn">Share</button>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
+        </div>
+
+        <div className="userCtn">
+          {users.map((oneUser)=> {
+          return (
+            <div key={oneUser._id}>
+              <Link to={'/users'}>
+              <img id="imgUser" src={oneUser.photo} alt="profile photo"/>
+              <h1>{oneUser.username}</h1>
+              </Link>
+            </div>
+          )
+        })}
+        </div>
+
       </div>
     </>
   );
