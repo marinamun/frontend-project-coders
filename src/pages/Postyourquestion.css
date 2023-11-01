@@ -30,8 +30,9 @@ button {
 }
 .question-container div {
   border: 1.5px solid #cca8e9;
-  margin-left: 70px;
-  margin-right: 70px;
+  margin: 0 auto;
+  width: 70%;
+
   background-color: #defcf9;
   border-radius: 15px;
   padding: 15px;
@@ -66,9 +67,9 @@ button {
   border-radius: 20px;
 }
 .text-input {
-  width: 300px; 
-  height: 25px; 
-  font-size: 14px; 
+  width: 300px;
+  height: 25px;
+  font-size: 14px;
   color: #282a36;
   border: none;
   border-radius: 10px;
@@ -82,9 +83,12 @@ button {
 /*RESPONSIVE*/
 @media (max-width: 800px) {
   .question-container input {
+    width: 80%;
+  }
+  #selector {
     width: 70%;
   }
-  #selector{
+  .question-container div {
     width: 70%;
   }
 }

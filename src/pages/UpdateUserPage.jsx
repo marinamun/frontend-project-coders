@@ -123,7 +123,7 @@ const UpdateUserPage = () => {
       </h1>
       <div className="update-container">
         <form onSubmit={onSubmit}>
-          <div>
+          <div style={{ marginBottom: "15px" }}>
             <label>Username</label>
             <input
               type="text"
@@ -132,7 +132,7 @@ const UpdateUserPage = () => {
               onChange={(event) => setUserName(event.currentTarget.value)}
             />
           </div>
-          <div>
+          <div style={{ marginBottom: "15px" }}>
             <label>Email</label>
             <input
               type="text"
@@ -142,7 +142,7 @@ const UpdateUserPage = () => {
             />
           </div>
 
-          <div>
+          <div style={{ marginBottom: "15px" }}>
             <label>Languages</label>
             <select
               value={languages}
@@ -163,7 +163,7 @@ const UpdateUserPage = () => {
             </select>
           </div>
 
-          <div>
+          <div style={{ marginBottom: "15px" }}>
             <label>Level</label>
 
             <select
@@ -177,7 +177,7 @@ const UpdateUserPage = () => {
               <option value="Senior">"Senior"</option>
             </select>
           </div>
-          <div>
+          <div style={{ marginBottom: "15px" }}>
             <label>Country </label>
             <input
               value={country}
@@ -185,7 +185,7 @@ const UpdateUserPage = () => {
               onChange={(event) => setCountry(event.currentTarget.value)}
             />
           </div>
-          <div>
+          <div style={{ marginBottom: "15px" }}>
             <label>Photo URL:</label>
             <input
               type="file"
