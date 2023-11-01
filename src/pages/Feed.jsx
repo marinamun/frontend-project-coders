@@ -5,6 +5,7 @@ import "../pages/Feed.css"
 
 const Feed = () => {
   const [questions, setQuestions] = useState([]);
+  const [users, setUsers] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("All");
   const [answerNumber, setAnswerNumber] = useState(0);
   const { answerId } = useParams();
@@ -25,7 +26,22 @@ const Feed = () => {
     }
   };
 
-  
+  const getAllUsers = async () => {
+    try {
+      const responseFromBackend = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users`
+      );
+      console.log(responseFromBackend)
+      if (responseFromBackend.status === 200) {
+        
+        const parsed = await responseFromBackend.json();
+        console.log(parsed);
+        setUsers(parsed.allUsers)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleFilter = (event) => {
     setSelectedLanguage(event.target.value);
@@ -39,6 +55,7 @@ const Feed = () => {
 
   useEffect(() => {
     getAllQuestions();
+    getAllUsers()
   }, []);
 
   return (
@@ -46,6 +63,14 @@ const Feed = () => {
       <Navbar />
       <div className="container">
       <h1>FEEEEED👋🏼</h1>
+
+      {users.map((oneUser)=> {
+        return (
+          <div key={oneUser._id}>
+            <h1>{oneUser.username}</h1>
+          </div>
+        )
+      })}
 
       <div>
         <label>
@@ -76,10 +101,10 @@ const Feed = () => {
               return (
                 <li key={question._id}>
                   <div>
-                        <h4>{question.owner.username}</h4>
-                        <img src={question.owner.photo} />
                     <div>
                       <Link to={`/feed/${question._id}`}>
+                        <img src={question.owner.photo} />
+                        <h4>{question.owner.username}</h4>
                         <h3>{question.title}</h3>
                         <p>{question.text}</p>
                         <img src={question.image} />
