@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import "../pages/Profile.css";
 
 const Profile = () => {
   // To protect the user page. Only the logged-in user can access it.
@@ -61,28 +62,41 @@ const Profile = () => {
   return oneUser ? (
     <>
       <Navbar />
-      <h1>This is the user's page</h1>
-      <img src={oneUser.photo} alt="profile photo" />
-      <h3>{oneUser.username}</h3>
-      <p>{oneUser.email}</p>
-      <p>{oneUser.country}</p>
-      <p>{oneUser.languages}</p>
-      <p>{oneUser.level}</p>
+      <div className="container">
+        <div className="info">
+          <h1>Hi {oneUser.username}👋🏼</h1>
+          <img
+            src={oneUser.photo}
+            alt="profile photo"
+            style={{ width: "200px" }}
+          />
+          <h3>{oneUser.username}</h3>
+          <p>{oneUser.email}</p>
+          <p>🌍{oneUser.country}</p>
+          <p>💻{oneUser.languages}</p>
+          <p>{oneUser.level}</p>
 
-      <Link to={`/users/update`}>
-        <button type="button">Update</button>
-      </Link>
-
-      <h1>Questions of the user</h1>
-      {userQuestions &&
-        userQuestions.map((question) => (
-          <div key={question._id}>
-            <Link to={`/feed/${question._id}`}>
-              <p>{question.title}</p>
-            </Link>
-            {/* Display other question details as needed */}
-          </div>
-        ))}
+          <Link to={`/users/update`}>
+            <button type="button" className="update-btn">
+              ⚙️SETTINGS
+            </button>
+          </Link>
+        </div>
+        <div className="questions">
+          <h1>Your questions</h1>
+          {userQuestions &&
+            userQuestions.map((question) => (
+              <div key={question._id}>
+                <Link to={`/feed/${question._id}`}>
+                  <p className="each-question">
+                    💬<span>{question.title}</span>{" "}
+                  </p>
+                </Link>
+                {/* Display other question details as needed */}
+              </div>
+            ))}
+        </div>
+      </div>
     </>
   ) : (
     <h1>Loading...</h1>

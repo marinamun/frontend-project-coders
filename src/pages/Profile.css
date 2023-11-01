@@ -1,0 +1,124 @@
+.container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+h1,
+h2,
+h3,
+p {
+  color: #282a36;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+/*Personal information, left side*/
+.info {
+  width: 30%;
+  border: 3px solid #cadefc;
+  border-radius: 20px;
+  padding: 35px;
+  background-color: #defcf9;
+  filter: drop-shadow(0 0 0.25rem white);
+  height: 490px;
+}
+.info img {
+  margin: 0 auto;
+  display: block;
+  border-radius: 25px;
+  filter: drop-shadow(0 0 0.25rem #282a36);
+}
+
+.update-btn {
+  margin: 0 auto;
+  display: block;
+  padding: 15px;
+  background-color: white;
+  border: 1.5px solid #cadefc;
+  border-radius: 15px;
+  font-family: "Nunito", sans-serif;
+  color: #282a36;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.update-btn:hover {
+  background-color: #cadefc;
+  color: white;
+}
+/*User's question, right side*/
+
+.questions {
+  width: 30%;
+  margin-left: 30px;
+  background-color: #c3bef0;
+  border: 3px solid #cca8e9;
+  border-radius: 20px;
+  padding: 35px;
+  filter: drop-shadow(0 0 0.25rem white);
+}
+.each-question {
+  border: 1.5px solid white;
+  border-radius: 15px;
+  padding: 15px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+.each-question span {
+  margin-left: 40px;
+}
+.each-question:hover {
+  background-color: #cca8e9;
+}
+
+/*UPDATE USER PAGE*/
+
+.update-container {
+  text-align: center;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+}
+form {
+  width: 60%;
+  height: 450px;
+  background-color: #cadefc;
+  border-radius: 20px;
+  padding: 50px 30px;
+  border: 1.5px solid white;
+  filter: drop-shadow(0 0 0.25rem white);
+}
+form div {
+  color: white;
+  margin-left: 70px;
+  margin-right: 70px;
+  background-color: #cca8e9;
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 15px;
+  border: 1px solid #cca8e9;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+form label {
+  margin-right: 10px;
+}
+.updatepage-btn {
+  margin: 0 auto;
+  display: block;
+  padding: 15px;
+  background-color: white;
+  border: 1.5px solid #cadefc;
+  border-radius: 15px;
+  font-family: "Nunito", sans-serif;
+  color: #282a36;
+  font-weight: bold;
+  transition: 0.1s ease;
+}
+.updatepage-btn:hover {
+  border: 2px solid #282a36;
+  filter: drop-shadow(0 0 0.45rem white);
+}

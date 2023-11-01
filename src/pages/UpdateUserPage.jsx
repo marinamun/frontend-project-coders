@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import "../pages/Profile.css";
 
 const UpdateUserPage = () => {
   const { userId } = useParams();
@@ -86,7 +87,8 @@ const UpdateUserPage = () => {
         if (error.response) {
           console.log("Server error data:", error.response.data);
         } else {
-          console.log("Error updating user:", error);}
+          console.log("Error updating user:", error);
+        }
       });
 
     /*try {
@@ -116,83 +118,81 @@ const UpdateUserPage = () => {
   return (
     <>
       <Navbar />
-      <form onSubmit={onSubmit}>
-        <div>
-          <label>Username</label>
-          <input
-            type="text"
-            value={userName}
-            onChange={(event) => setUserName(event.currentTarget.value)}
-          />
-        </div>
-        <div>
-          <label>Email</label>
-          <input
-            type="text"
-            value={email}
-            onChange={(event) => setEmail(event.currentTarget.value)}
-          />
-        </div>
+      <h1 style={{ color: "white" }}>Update your details:</h1>
+      <div className="update-container">
+        <form onSubmit={onSubmit}>
+          <div>
+            <label>Username</label>
+            <input
+              type="text"
+              value={userName}
+              onChange={(event) => setUserName(event.currentTarget.value)}
+            />
+          </div>
+          <div>
+            <label>Email</label>
+            <input
+              type="text"
+              value={email}
+              onChange={(event) => setEmail(event.currentTarget.value)}
+            />
+          </div>
 
-        {/*<div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.currentTarget.value)}
-          />
-  </div>*/}
+          <div>
+            <label>Languages</label>
+            <select
+              value={languages}
+              multiple={true}
+              onChange={(e) => {
+                const options = [...e.currentTarget.selectedOptions];
+                const values = options.map((option) => option.value);
+                setLanguages(values);
+              }}
+            >
+              <option value="JavaScript">"JavaScript"</option>
+              <option value="Python">"Python"</option>
+              <option value="Java">"Java"</option>
+              <option value="C++">"C++"</option>
+              <option value="C#">"C#"</option>
+            </select>
+          </div>
 
-        <div>
-          <label>Languages</label>
-          <select
-            value={languages}
-            multiple={true}
-            onChange={(e) => {
-              const options = [...e.currentTarget.selectedOptions];
-              const values = options.map((option) => option.value);
-              setLanguages(values);
-            }}
-          >
-            <option value="JavaScript">"JavaScript"</option>
-            <option value="Python">"Python"</option>
-            <option value="Java">"Java"</option>
-            <option value="C++">"C++"</option>
-            <option value="C#">"C#"</option>
-          </select>
-        </div>
+          <div>
+            <label>Level</label>
 
-        <div>
-          <label>Level</label>
+            <select
+              value={level}
+              onChange={(event) => setLevel(event.currentTarget.value)}
+            >
+              <option value="Learner">"Learner"</option>
+              <option value="Junior">"Junior"</option>
+              <option value="Senior">"Senior"</option>
+            </select>
+          </div>
+          <div>
+            <label>
+              Country
+              <input
+                value={country}
+                onChange={(event) => setCountry(event.currentTarget.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label>Photo URL:</label>
+            <input
+              type="file"
+              //value={photo}
+              name="image"
+              //onChange={(event) => setPhoto(event.currentTarget.value)}
+            />
+          </div>
 
-          <select
-            value={level}
-            onChange={(event) => setLevel(event.currentTarget.value)}
-          >
-            <option value="Learner">"Learner"</option>
-            <option value="Junior">"Junior"</option>
-            <option value="Senior">"Senior"</option>
-          </select>
-        </div>
-        <label>
-          Country
-          <input
-            value={country}
-            onChange={(event) => setCountry(event.currentTarget.value)}
-          />
-        </label>
-        <div>
-          <label>Photo URL:</label>
-          <input
-            type="file"
-            //value={photo}
-            name="image"
-            //onChange={(event) => setPhoto(event.currentTarget.value)}
-          />
-        </div>
-
-        <button type="submit">Update</button>
-      </form>
+          <button type="submit" className="updatepage-btn">
+            Update
+          </button>
+        </form>
+      </div>
     </>
   );
 };
