@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import AllAnswers from "../components/AllAnswers";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const QuestionDetailsPage = () => {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { questionId, answerId } = useParams();
+
   //const { answerId } = useParams();
   const [question, setQuestion] = useState();
   //const [userAnswers, setUserAnswers] = useState([]);
@@ -113,9 +117,16 @@ const QuestionDetailsPage = () => {
         return (
           <div key={oneAnswer._id}>
             <p>{oneAnswer.text}</p>
-
             <img src={oneAnswer.image} />
-            <button className="deleteBtn" onClick={() => deleteAnswer(oneAnswer._id)}>Delete</button>
+            {console.log(user)}
+            {user.userId === question.owner._id ? (
+              <button
+                className="deleteBtn"
+                onClick={() => deleteAnswer(oneAnswer._id)}
+              >
+                Delete
+              </button>
+            ) : null}
           </div>
         );
       })}
