@@ -37,10 +37,10 @@ const SignUp = () => {
   return (
     <>
     <div className="signupDiv">
-      {/* <h1>Signup</h1> */}
+    <img src="https://media.giphy.com/media/EK24OWrJSy1GkkNu0y/giphy.gif" alt="" style={{ width: "200px" }} />
       <form className="signupForm" onSubmit={handleSubmit}>
         <label>
-          Username
+          Username:
           <input
             value={username}
             onChange={(event) => setUsername(event.target.value)}

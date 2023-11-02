@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <>
     <div className="loginDiv">
-      {/* <h1>Login</h1> */}
+          <img src="https://media.giphy.com/media/EK24OWrJSy1GkkNu0y/giphy.gif" alt="" style={{ width: "200px" }} />
       <form className="loginForm" onSubmit={handleSubmit}>
         <label>
           Username:
