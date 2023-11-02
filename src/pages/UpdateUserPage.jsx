@@ -9,7 +9,7 @@ const UpdateUserPage = () => {
   const { userId } = useParams();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  //const [password, setPassword] = useState("");
+
   const [languages, setLanguages] = useState([
     "Javascript",
     "Python",
@@ -20,7 +20,7 @@ const UpdateUserPage = () => {
   const [level, setLevel] = useState("");
   const [photo, setPhoto] = useState("");
   const [country, setCountry] = useState("");
-  //const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
@@ -52,7 +52,6 @@ const UpdateUserPage = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    /*const payload = { userName, email, languages, level, photo, country };*/
     const currentToken = localStorage.getItem("authToken");
 
     const photo = event.target.image.files[0];
@@ -74,8 +73,6 @@ const UpdateUserPage = () => {
         formData,
         {
           headers: {
-            /*"Content-type": "multipart/form-data", ///removed json!!!*/
-
             Authorization: `Bearer ${currentToken}`,
           },
         }
@@ -90,29 +87,6 @@ const UpdateUserPage = () => {
           console.log("Error updating user:", error);
         }
       });
-
-    /*try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/${user.userId}`,
-
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
-
-      if (response.status === 200) {
-        await response.json();
-        navigate(`/users`);
-      }
-    } catch (error) {
-      console.log(error);
-      setErrorMessage(error.message);
-    }
-    */
   };
 
   return (

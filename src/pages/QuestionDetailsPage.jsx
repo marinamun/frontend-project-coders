@@ -88,7 +88,7 @@ const QuestionDetailsPage = () => {
         ) : null}
         <p id="by">By: {question.owner.username}</p>
       </div>
-      {/* <h5>Number of answers:{answerNumber}</h5> */}
+      
 
       <AllAnswers answer={answer} setAnswer={setAnswer} />
       <div className="answer-card">
