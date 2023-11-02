@@ -42,7 +42,7 @@ const AllAnswers = ({ answer, setAnswer }) => {
 
   return (
     <div>
-      {/* <h2>Answer</h2> */}
+      
       <div className="answer-form">
         <form onSubmit={onSubmit}>
           <div >

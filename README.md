@@ -44,6 +44,8 @@ This is an app to help coders resolving issues in their code. Different language
 ## Models
 
 User Model
+
+```
 {
 username: {
 type: String,
@@ -78,8 +80,11 @@ default:
 }
 }
 { timestamps: true}
+```
 
 Question Model
+
+```
 {
 owner: { type: Schema.Types.ObjectId, ref: "User" },
 title: { type: String, required: [true, "Title is required."] },
@@ -94,22 +99,62 @@ type: String,
 answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }]
 },
 { timestamps: true}
+```
 
 Answer Model
+
+```
 {
 owner: { type: Schema.Types.ObjectId, ref: "User" },
 question: {type: Schema.Types.ObjectId, ref: "Question" },
 text: { type: String, required: [true, "Text is required."] },
-
-    image: { type: String }
+image: { type: String },
 
 },
 { timestamps: true}
+```
 
 ## API Endpoints (backend routes)
 
-| HTTP Method |      URL       |        Request body         | Success status | Error status |                                                           Description                                                           |
-| :---------: | :------------: | :-------------------------: | :------------: | :----------: | :-----------------------------------------------------------------------------------------------------------------------------: |
-|     GET     |    `/auth`     |        Saved session        |                |              |                                                   Check if user is logged in                                                    |
-|    POST     | `/auth/signup` | {username, email, password} |      201       |     400      | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-|    POST     | `/auth/login`  |    {username, password}     |      200       |     400      |       Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session        |
+| HTTP Method |                URL                 |          Request body           | Success status | Error status |                                                           Description                                                           |
+| :---------: | :--------------------------------: | :-----------------------------: | :------------: | :----------: | :-----------------------------------------------------------------------------------------------------------------------------: |
+|     GET     |              `/auth`               |          Saved session          |                |              |                                                   Check if user is logged in                                                    |
+|    POST     |           `/auth/signup`           |   {username, email, password}   |      201       |     400      | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+|    POST     |           `/auth/login`            |      {username, password}       |      200       |     400      |       Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session        |
+|     GET     |          `/api/questions`          |                                 |      201       |     500      |                                               Show all the questions in the feed                                                |
+|    POST     |        `/api/questions/new`        | {title, text, languages, image} |      201       |     500      |                                                       Add a new question                                                        |
+|     GET     |    `/api/questions/:questionId`    |                                 |      201       |     400      |                                                  Show details of one question                                                   |
+|   DELETE    |    `/api/questions/:questionId`    |                                 |      200       |     500      |                                                         Delete question                                                         |
+|     GET     |      `/api/questions/answers`      |                                 |      201       |     500      |                                             Show answers about a specific question                                              |
+|    POST     | `/api/questions/answers/:answerId` |          {text, image}          |      200       |     500      |                                                          Add an answer                                                          |
+|     GET     | `/api/questions/answers/:answerId` |                                 |      201       |     400      |                                 Show a specific answer with user and question details populated                                 |
+|   DELETE    | `/api/questions/answers/:answerId` |                                 |      204       |     500      |                                                        Delete one answer                                                        |
+|     GET     |            `/api/users`            |                                 |      200       |     500      |                                                       Show all the users                                                        |
+|     GET     |        `/api/users/:userId`        |                                 |      201       |     404      |                                                    Show details of one user                                                     |
+|     GET     |   `/api/users/:userId/questions`   |                                 |      201       |     400      |                                            Show questions posted by a specific user                                             |
+|     PUT     |        `/api/users/:userId`        |   {languages, level, country}   |      200       |     400      |                                                Update data from a specific user                                                 |
+|   DELETE    |        `/api/users/:userId`        |                                 |      204       |     500      |                                                         Delete profile                                                          |
+
+# Links
+
+## Collaborators
+
+[Alice Pennec](https://github.com/alicepennec)
+
+[Marina Muñoz](https://github.com/marinamun)
+
+[Telma Coelho]()
+
+[Raheleh Bayat](https://github.com/raheleh-bayat)
+
+## Git
+
+[Server Repository Link](https://github.com/marinamun/backend-coders-forreal)
+
+[Client Repository Link](https://github.com/marinamun/frontend-project-coders)
+
+[Deploy Link](https://lord-of-the-coders.netlify.app/)
+
+## Slides
+
+[Slides Link]()

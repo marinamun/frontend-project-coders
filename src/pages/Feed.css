@@ -42,15 +42,19 @@ margin-bottom: 1rem;
 border-radius: 1rem;
 }
 
-.bodyPostCtn h3 p {
+.bodyPostCtn p {
     font-family: 'Playpen Sans', cursive;
-    color: #defcf9;
+    color: #2f2e3a;
 }
 
 .headerPostCtn{
 display: flex;
 justify-content: flex-start;
 align-items: center;
+}
+
+.headerPostCtn h3 {
+    color: #2f2e3a;
 }
 
 #imgPostUser{
@@ -124,7 +128,17 @@ background-color: #cadefc;
 border-radius: 0.4rem;
 padding: 0.6rem;
 border: 1px solid white;
+color: #410A66;
+}
 
+.btn-question {
+    filter: drop-shadow(0 0 0.25rem white);
+    padding: 15px;
+    border-radius: 0.4rem;
+    border: 1px solid white;
+    background-color: #cadefc;
+    color: #410A66;
+    font-size: 18px;
 }
 
 /* RESPONSIVE PART */
