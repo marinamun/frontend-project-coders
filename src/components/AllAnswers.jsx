@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "../components/Answer.css"
+import "../components/Answer.css";
 
 const AllAnswers = ({ answer, setAnswer }) => {
   const navigate = useNavigate();
@@ -38,44 +38,29 @@ const AllAnswers = ({ answer, setAnswer }) => {
       .catch((error) => {
         console.log("Error posting answer:", error);
       });
-
-    /* const payload = {text:answer}
-        try {
-            const currentToken = localStorage.getItem("authToken");
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/questions/answers/${questionId}/new`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    
-                    Authorization: `Bearer ${currentToken}`,
-                },
-                body: JSON.stringify(payload)
-            })
-            if (res.status === 201) {
-                const parsed = await res.json()
-                console.log(parsed, "allAnswers")
-                setAnswer(parsed);
-        }} catch (error) {
-            console.log(error)
-        } */
   };
 
   return (
-    <div className="answer-div">
+    <div>
       {/* <h2>Answer</h2> */}
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Leave it here your Answer"
-          value={answer}
-          onChange={(event) => setAnswer(event.target.value)}
-          className="answer-input"
-        />
-        <input type="file" name="image" id="answer-input-file" />
-        <button type="submit" className="answer-button">
-          Send
-        </button>
-      </form>
+      <div className="answer-form">
+        <form onSubmit={onSubmit}>
+          <div >
+            <input
+              type="text"
+              placeholder="✍🏼Type here your answer"
+              value={answer}className="text-input"
+              onChange={(event) => setAnswer(event.target.value)}
+            />
+          </div>
+          <div >
+            <input type="file" name="image"className="file-input" />
+          </div>
+          <div>
+            <button type="submit" className="send-button">Submit</button>{" "}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
