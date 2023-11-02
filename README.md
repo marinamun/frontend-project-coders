@@ -35,6 +35,9 @@ This is an app to help coders resolving issues in their code. Different language
 | Path |   Page   |   Permissions    |   Behavior   |
 | :--: | :------: | :--------------: | :----------: |
 | `/`  | Homepage | public `<Route>` | Welcome page |
+| `/signup`  | SignUp | public `<Route>` | Sign up page |
+| `/login`  | Login | public `<Route>` | Login page |
+| `/feed`  | Feed | user only `<PrivateRoute>` | Login page |
 
 # Server / Backend
 

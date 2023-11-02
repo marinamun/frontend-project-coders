@@ -230,23 +230,24 @@ display: flex;
 /*RESPONSIVENESS*/
 @media (max-width: 700px) and (max-height: 900px) {
     .navbarWords {
-            /* background: aquamarine; */
-            width: 50vw;
+           /*  background: aquamarine; */
+            width: 60vw;
             display: flex;
+            align-items: center;
         }
         
         .navbarWordsOther {
             /* background: black; */
-            width: 50vw;
+            height: 10vh;
+            width: 60vw;
             display: flex;
-            flex-direction: column;
             margin-top: 2vh;
-            margin-right: 8vw;
+            margin: 0 auto;
         }
         
         
         .navbarOne {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-family: 'Nunito', sans-serif;
             font-weight: bold;
             display: flex;
@@ -255,7 +256,7 @@ display: flex;
         }
         
         .navbarTwo {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-family: 'Nunito', sans-serif;
             font-weight: bold; 
             display: flex;
@@ -264,8 +265,9 @@ display: flex;
         }
 
     .logo {
-    width: 150px;
+    width: 120px;
     display: flex;
+    /* background-color: red; */
     }
 
     .homepageDiv {
