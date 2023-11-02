@@ -1,36 +1,43 @@
-.answer-div{
-display: flex;
-flex-direction: column;
-
+.answer-form {
+  margin: 0 auto;
+  background-color: #cadefc;
+  width: 70%;
+  border-radius: 15px;
+  filter: drop-shadow(0 0 0.35rem #defcf9);
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
-.answer-main{
-width: 700px;
-height: 400px;
-background-color: #cca8e9;
-border-radius: 20px;
-margin-left: 700px;
-margin-top: 40px;
+.answer-form form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
-.answer-input{
-width: 400px;
-height: 100px;
-border-radius: 10px;
-margin-left: 140px;
-margin-top: 50px;
+.answer-form form div {
+  padding: 10px;
+  margin: 0 auto;
+  background-color: #cadefc;
 }
-#answer-input-file{
-border-radius: 5px;
-margin-left: 300px;
-margin-top: 40px;
-
+.answer-form .text-input {
+  margin: 0 auto;
+  width: 100%; /* Make the input bar 100% width */
+  background-color: white; /* Set white background color */
+  padding: 5px 30px; /* Adjust padding as needed */
+  border: 1px solid #ccc; /* Add border for a cleaner look (optional) */
+  border-radius: 5px; /* Optional: add border-radius for rounded corners */
+  margin-bottom: 10px; /* Optional: add margin-bottom for spacing between input and file input */
 }
-.answer-button{
-width: 300px;
-height: 50px;
-border-radius: 10px;
-background-color:  #defcf9;
-color:#cca8e9;
-border: none;
-margin-left: 200px;
-margin-top: 50px;
+.send-button{
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 15px;
+    filter: drop-shadow(0 0 0.15rem white);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+}
+.send-button:hover{
+    background-color: #CCA8E9;
+    color: white;
 }
