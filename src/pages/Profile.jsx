@@ -1,15 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../pages/Profile.css";
 
 const Profile = () => {
   // To protect the user page. Only the logged-in user can access it.
-  const { fetchWithToken, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-  const navigate = useNavigate();
-  
   const [oneUser, setOneUser] = useState(null);
   const [userQuestions, setUserQuestions] = useState([]);
   console.log(user);
