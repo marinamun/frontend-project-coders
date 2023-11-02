@@ -95,7 +95,7 @@ const Feed = () => {
                     <li key={question._id}>
                       <div className="onePost">
                         <div className="headerPostCtn">
-                          <img id="imgPostUser" src={question.owner.photo} alt="profile photo" />
+                          <img id="imgPostUser" src={question.owner?.photo} alt="profile photo" />
                           <h3>{question.title}</h3>
                         </div>
                         <div className="bodyPostCtn">
