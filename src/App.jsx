@@ -62,6 +62,8 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        <Route path="*" element={<h1>404 Page Not Found</h1>}></Route>
       </Routes>
     </>
   );
