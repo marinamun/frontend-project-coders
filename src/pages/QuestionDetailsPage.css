@@ -31,6 +31,12 @@ p {
   width: 40%;
   display: block;
   margin: 0 auto;
+  border: 3px solid white;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.question-card img:hover{
+    transform: scale(1.5);
 }
 
 .delete-btn {
@@ -86,4 +92,12 @@ p {
 }
 .one-answer img:hover{
     transform: scale(1.5);
+}
+
+
+
+@media (max-width: 800px){
+    .one-answer p{
+        font-size: 20px;
+    }
 }

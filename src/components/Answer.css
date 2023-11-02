@@ -27,17 +27,25 @@
   border-radius: 5px; /* Optional: add border-radius for rounded corners */
   margin-bottom: 10px; /* Optional: add margin-bottom for spacing between input and file input */
 }
-.send-button{
-    margin-top: 15px;
-    padding: 15px;
-    border: 1px solid white;
-    background-color: white;
-    border-radius: 15px;
-    filter: drop-shadow(0 0 0.15rem white);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    
+.send-button {
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 15px;
+  filter: drop-shadow(0 0 0.15rem white);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.send-button:hover{
-    background-color: #CCA8E9;
-    color: white;
+.send-button:hover {
+  background-color: #cca8e9;
+  color: white;
+}
+@media (max-width: 800px) {
+  .answer-form .text-input {
+    width: auto;
+  }
+  .answer-form .file-input {
+    width: 134px;
+    
+  }
 }
