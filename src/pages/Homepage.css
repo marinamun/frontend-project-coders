@@ -251,7 +251,6 @@ display: flex;
             font-family: 'Nunito', sans-serif;
             font-weight: bold;
             display: flex;
-            justify-content: center;
             margin: auto;
         }
         
@@ -260,8 +259,8 @@ display: flex;
             font-family: 'Nunito', sans-serif;
             font-weight: bold; 
             display: flex;
-            justify-content: center;
             margin: auto;
+            padding-left: 0;
         }
 
     .logo {
