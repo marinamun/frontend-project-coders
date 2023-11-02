@@ -1,6 +1,6 @@
-#h1{
-    margin-top: 45px;
-    margin-bottom: 40px;
+#h1 {
+  margin-top: 45px;
+  margin-bottom: 40px;
 }
 /*QUESTION CARD*/
 .question-card {
@@ -35,8 +35,8 @@ p {
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
-.question-card img:hover{
-    transform: scale(1.5);
+.question-card img:hover {
+  transform: scale(1.5);
 }
 
 .delete-btn {
@@ -50,8 +50,8 @@ p {
   margin-left: auto;
   margin-right: auto;
 }
-#by{
-    padding-bottom: 30px;
+#by {
+  padding-bottom: 30px;
 }
 /*ANSWER CARD*/
 .answer-card {
@@ -83,21 +83,22 @@ p {
 .answer-card h1 {
   text-align: center;
 }
-.one-answer img{
-    width: 30%;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+.one-answer img {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
 }
-.one-answer img:hover{
-    transform: scale(1.5);
+.one-answer img:hover {
+  transform: scale(1.5);
 }
 
-
-
-@media (max-width: 800px){
-    .one-answer p{
-        font-size: 20px;
-    }
+@media (max-width: 800px) {
+  .one-answer p {
+    font-size: 20px;
+  }
+  .question-card p {
+    padding: 2px 10px;
+  }
 }
