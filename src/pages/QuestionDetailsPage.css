@@ -4,14 +4,14 @@ flex-direction: column;
 justify-content: space-around;
 align-items: flex-start;
 }
-h1{
+/* h1{
 background-color: #cca8e9;
 height: 900px;
 width: 700px;
 position: absolute;
 left:700px;
 border-radius: 20px;
-}
+} */
 .question-header{
 display: flex;
 justify-content: space-around;
