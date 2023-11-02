@@ -61,8 +61,8 @@ display: flex;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(329deg, #defcf9, #cadefc, #c3bef0, #cca8e9);
-    padding: 2vh;
-    padding: 2vw;
+    padding: 1vh;
+    padding: 1vw;
     margin: 10px;
     margin: 0 auto;
     border: 6px solid white;
@@ -81,6 +81,8 @@ display: flex;
     font-family: 'Nunito', sans-serif; 
     padding: 30px;
     transition: 0.3s ease;
+    filter: drop-shadow(0 0 0.50rem #410A66);
+    font-size: 3rem;
     
 }
 
@@ -271,13 +273,13 @@ display: flex;
         padding: 4vw;
         margin: 10px;
         margin: 0 auto;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .homepageDiv ul {
         display: flex;
         flex-direction: column;
-        padding: 6vh 1vh 18vh 1vh;
+        padding: 2vh 1vh 15vh 1vh;
     }
 
     .homepageDiv img {
