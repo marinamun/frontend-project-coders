@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import {  Link, useParams } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import "../pages/Feed.css"
 
 
