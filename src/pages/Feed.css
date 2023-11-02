@@ -40,6 +40,7 @@ padding: 1.5rem;
 width: 60vw;
 margin-bottom: 1rem;
 border-radius: 1rem;
+filter: drop-shadow(0 0 0.25rem white);
 }
 
 .bodyPostCtn p {
