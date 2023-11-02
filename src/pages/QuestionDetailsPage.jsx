@@ -71,31 +71,30 @@ const QuestionDetailsPage = () => {
       <h1></h1>
       <div className="container">
         <div className="qustion-parent">
+          <h5>Number of answers:{answerNumber}</h5>
+          <h2>{question.title}</h2>
           <div className="question-header">
-            <h5>
-              Number of answers:{answerNumber}
-            </h5>
-            <h2>{question.title}</h2>
+            <img src={question.image} className="question-img" />
+            {user.userId === question.owner._id ? (
+              <button onClick={deleteQuestion} className="question-button">
+                Delete
+              </button>
+            ) : null}
+            <div className="question-text">
+              <p>{question.owner.username}</p>
+              <p>{question.languages}</p>
+              <p>{question.text}</p>
+              <p>{question.timestamps}</p>
+            </div>
           </div>
-          {user.userId === question.owner._id ? (
-            <button onClick={deleteQuestion} className="question-button">
-              Delete
-            </button>
-          ) : null}
-          <p className="question-text">{question.text}</p>
-          <p className="question-username">{question.owner.username}</p>
-          <p className="question-language">{question.languages}</p>
-          <p>{question.timestamps}</p>
-
-          <img src={question.image} className="question-img" />
         </div>
         <AllAnswers answer={answer} setAnswer={setAnswer} />
 
         {question.answers.map((oneAnswer) => {
           return (
             <div className="question-answer" key={oneAnswer._id}>
-              <p className="answer-text">{oneAnswer.text}</p>
               <img id="question-img" src={oneAnswer.image} />
+              <p className="answer-text">{oneAnswer.text}</p>
               {console.log(question)}
               {user.userId === oneAnswer.owner ? (
                 <button

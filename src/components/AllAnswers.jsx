@@ -63,19 +63,21 @@ const AllAnswers = ({ answer, setAnswer }) => {
   return (
     <div className="answer-div">
       {/* <h2>Answer</h2> */}
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Leave it here your Answer"
-          value={answer}
-          onChange={(event) => setAnswer(event.target.value)}
-          className="answer-input"
-        />
-        <input type="file" name="image" id="answer-input-file" />
-        <button type="submit" className="answer-button">
-          Send
-        </button>
-      </form>
+      <div className="answer-main">
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            placeholder="Leave it here your Answer"
+            value={answer}
+            onChange={(event) => setAnswer(event.target.value)}
+            className="answer-input"
+          />
+          <input type="file" name="image" id="answer-input-file" />
+          <button type="submit" className="answer-button">
+            Send
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
