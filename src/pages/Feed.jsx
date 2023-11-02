@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import {  Link, useParams } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import "../pages/Feed.css"
 
 
@@ -71,7 +71,7 @@ const Feed = () => {
                   value={selectedLanguage}
                   onChange={handleFilter}
                 >
-                  <option value="All">All Languages</option>
+                  <option className="select-btn" value="All">All Languages</option>
                   <option value="JavaScript">JavaScript</option>
                   <option value="Python">Python</option>
                   <option value="Java">Java</option>
@@ -82,7 +82,7 @@ const Feed = () => {
             </div>
             <div>
               <Link to={"/questions/new"}>
-                <button className="btn">Add a question</button>
+                <button className="btn-question">Add a question</button>
               </Link>
             </div>
           </div>

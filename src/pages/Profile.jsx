@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../pages/Profile.css";
 
 const Profile = () => {
@@ -9,7 +9,7 @@ const Profile = () => {
   const { fetchWithToken, user } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  //const { userId } = useParams();
+  
   const [oneUser, setOneUser] = useState(null);
   const [userQuestions, setUserQuestions] = useState([]);
   console.log(user);
@@ -39,11 +39,7 @@ const Profile = () => {
       if (responseFromBackend.ok) {
         const parsedFromBackend = await responseFromBackend.json();
         console.log(parsedFromBackend);
-        /* if(Question.owner._id === user.userId){
-            setUserQuestions(parsedFromBackend.userQuestions)
-          }else {
-            console.error("Failed to fetch question data");
-        } */
+        
         setUserQuestions(parsedFromBackend.userQuestions);
         console.log(parsedFromBackend.userQuestions);
       } else {
@@ -94,7 +90,7 @@ const Profile = () => {
                     <span id="emoji">💬</span><span id="title">{question.title}</span>{" "}
                   </p>
                 </Link>
-                {/* Display other question details as needed */}
+                
               </div>
             ))}
         </div>
