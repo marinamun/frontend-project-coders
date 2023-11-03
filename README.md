@@ -165,7 +165,7 @@ image: { type: String },
 
 [Marina Muñoz](https://github.com/marinamun)
 
-[Telma Coelho]()
+[Telma Coelho](https://github.com/usagi-11)
 
 [Raheleh Bayat](https://github.com/raheleh-bayat)
 
@@ -179,4 +179,4 @@ image: { type: String },
 
 ## Slides
 
-[Slides Link]()
+[Slides Link](https://www.canva.com/design/DAFzCcRvxgo/nnnMBpxKrG5EgIUoEntfQg/edit?utm_content=DAFzCcRvxgo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
