@@ -35,9 +35,31 @@ This is an app to help coders resolving issues in their code. Different language
 | Path |   Page   |   Permissions    |   Behavior   |
 | :--: | :------: | :--------------: | :----------: |
 | `/`  | Homepage | public `<Route>` | Welcome page |
-| `/signup`  | SignUp | public `<Route>` | Sign up page |
-| `/login`  | Login | public `<Route>` | Login page |
-| `/feed`  | Feed | user only `<PrivateRoute>` | Login page |
+| `/signup`  | SignUp | public `<Route>` | Signup form, link to login, navigate to homepage after signup |
+| `/login`  | Login | public `<Route>` | Login form, link to signup, navigate to homepage after login |
+| `/feed`  | Feed | user only `<PrivateRoute>` | Show all the user's questions and the users |
+| `/feed/:questionId`  | QuestionDetailsPage | user only `<PrivateRoute>` | Show a specific question and it's answers. We're also able to write an answer to the question |
+| `/users`  | Profile | user only `<PrivateRoute>` | Profile page for the authenticated user, where they can view the questions they asked and also the ":zahnrad:SETTINGS" button to update their information |
+| `/questions/new`  | PostYourQuestion | user only `<PrivateRoute>` | The user can create a new question |
+| `/users/update`  | UpdateUserPage | user only `<PrivateRoute>` | The user can update their information (username, email, country, programming language and level) |
+
+## Components, pages and context
+
+- Signup
+- Login
+- Feed
+- Homepage
+- Postyourquestion
+- Profile
+- QuestionDetailsPage
+- UpdateUserPage
+
+- Navbar
+- AllAnswers
+- PrivateRoute
+
+- AuthContext
+
 
 # Server / Backend
 
