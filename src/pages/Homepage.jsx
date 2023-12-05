@@ -7,7 +7,6 @@ const Homepage = () => {
     <>
       <div className="homepageDiv">
         <img src={logo} alt="logo" />
-        <h1>WELCOME👋🏼</h1>
         <ul>
           <li>
             <Link to="/signup">Sign Up</Link>

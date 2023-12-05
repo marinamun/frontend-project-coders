@@ -1,10 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../components/Answer.css";
 
 const AllAnswers = ({ answer, setAnswer }) => {
-  const navigate = useNavigate();
   const { questionId } = useParams();
   const onSubmit = async (event) => {
     event.preventDefault();
