@@ -10,10 +10,10 @@ const Homepage = () => {
         <h1>WELCOME👋🏼</h1>
         <ul>
           <li>
-            <Link to="/signup">SignUp</Link>
+            <Link to="/signup">Sign Up</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login">Log In</Link>
           </li>
         </ul>
       </div>
